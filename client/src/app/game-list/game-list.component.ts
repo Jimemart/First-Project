@@ -13,7 +13,11 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.myService.getList()
               .subscribe((games)=>{
+                games.forEach(game =>{
+                  game.cover.url = game.cover.url.split("t_thumb").join("t_thumb_2x")
+                })
                 this.games = games
+
               })
   }
 

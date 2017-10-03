@@ -1,4 +1,4 @@
-<div *ngFor="let game of games">
-  <h1>{{game.name}}</h1>
-  <img [src] = 'game.cover.url' height="200">
-</div>
+
+  <div *ngFor="let game of games" [attr.data-value]="game.id" >
+    <img [src] = 'game.cover.url'>
+  </div>
