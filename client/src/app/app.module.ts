@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GetListService } from './services/get-list.service'
+import { AuthService } from './services/auth.service'
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http'
+import { FormsModule } from '@angular/forms';
 import { GameListComponent } from './game-list/game-list.component';
 
 @NgModule({
@@ -12,9 +14,10 @@ import { GameListComponent } from './game-list/game-list.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
   ],
-  providers: [GetListService],
+  providers: [GetListService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
