@@ -7,6 +7,7 @@ import { GetListService } from '../services/get-list.service'
 })
 export class GameListComponent implements OnInit {
   games;
+  images = [];
   constructor( public myService:GetListService) { }
 
   ngOnInit() {

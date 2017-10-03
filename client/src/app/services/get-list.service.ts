@@ -13,4 +13,5 @@ export class GetListService {
     return this.http.get(`${this.BASE_URL}/api/giveme`)
           .map((res) => res.json())
   }
+
 }
