@@ -9,10 +9,15 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class AuthService {
   BASE_URL: string = 'http://localhost:3000';
+  gamesList:Array<string>
+  platList: Array<string>
+  secondStep:Boolean
+  firstStep:Boolean
 
   private user:object;
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private options = {withCredentials:true};
+
 
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
@@ -37,9 +42,9 @@ export class AuthService {
       return Observable.throw(e.json().message);
     }
 
-    signup(username,password,email,games) {
+    signup(username,password,email,games,platforms) {
       console.log("entrooo")
-      return this.http.post(`${this.BASE_URL}/api/signup`, {username,password,email,games}, this.options)
+      return this.http.post(`${this.BASE_URL}/api/signup`, {username,password,email, games, platforms}, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);

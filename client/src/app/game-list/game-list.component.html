@@ -1,18 +1,6 @@
-
-<form >
-  <h2> Signup </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> Email </label>
-  <input type="email" [(ngModel)]="formInfo.email" name="email"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
-
-  <button (click)="signup()"> signup </button>
-</form>
-
   <div *ngFor="let game of games" [attr.data-value]="game.id" class="inline" #myGame>
-    <img [src] = 'game.cover.url' (click)="showme(myGame)">
+
+    <img *ngIf="game.cover" [src] ='game.cover.url' (click)="showme(myGame)">
+    <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="180"(click)="showme(myGame)">
   </div>
+  <button (click) ="sendGames()">NEXT</button>

@@ -9,8 +9,11 @@ export class GetListService {
   BASE_URL: string = 'http://localhost:3000';
   constructor(public http:Http) { }
 
-  getList(){
-    return this.http.get(`${this.BASE_URL}/api/giveme`)
+  getList(platforms){
+    const stringofPlat = platforms.join("-")
+    console.log(stringofPlat)
+    
+    return this.http.get(`${this.BASE_URL}/api/giveme/${stringofPlat}`)
           .map((res) => res.json())
   }
 

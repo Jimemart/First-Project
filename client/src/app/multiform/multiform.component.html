@@ -1,0 +1,9 @@
+<div *ngIf="!auth.firstStep">
+  <app-pick-plat></app-pick-plat>
+</div>
+<div *ngIf="!auth.secondStep  && auth.firstStep">
+  <app-game-list></app-game-list>
+</div>
+<div *ngIf = 'auth.secondStep'>
+  <app-signup></app-signup>
+</div>
