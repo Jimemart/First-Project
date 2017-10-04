@@ -5,7 +5,6 @@ import 'rxjs';
 import {environment} from '../../environments/environment';
 
 
-
 @Injectable()
 export class AuthService {
   BASE_URL: string = 'http://localhost:3000';
@@ -14,12 +13,12 @@ export class AuthService {
   secondStep:Boolean
   firstStep:Boolean
 
-  private user:object;
+  public user:object;
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private options = {withCredentials:true};
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, ) {
     this.isLoggedIn().subscribe();
   }
 

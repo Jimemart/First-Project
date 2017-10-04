@@ -10,8 +10,12 @@ import { SignupComponent } from './signup/signup.component';
 import { Routes } from "@angular/router";
 import { RouterModule } from '@angular/router';
 import {routes} from './routes';
+
 import { MultiformComponent } from './multiform/multiform.component';
 import { PickPlatComponent } from './pick-plat/pick-plat.component';
+
+import { ProfileComponent } from './profile/profile.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { PickPlatComponent } from './pick-plat/pick-plat.component';
     GameListComponent,
     SignupComponent,
     MultiformComponent,
-    PickPlatComponent
+    PickPlatComponent,
+
+    ProfileComponent,
+
+    LogInComponent
   ],
   imports: [
     BrowserModule,
