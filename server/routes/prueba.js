@@ -5,10 +5,13 @@ const igdb = require('igdb-api-node').default;
 const client = igdb('d954ff37e0384de2413508acc74eb559');
 
 
-gamesRoutes.get("/giveme", (req,res,next)=>{
+gamesRoutes.get("/giveme/:platforms", (req,res,next)=>{
+   const myFilter = req.params.platforms.split("-")
+   var text = myFilter.join(",")
+  console.log(text)
   client.games({
     filters:{
-      "release_dates.platform-eq" : 6 //48 ps4, 49 xbox,6 PC 
+      'release_dates.platform-any' : text
     },
     limit: 21,
     offset: 0,
@@ -22,6 +25,7 @@ gamesRoutes.get("/giveme", (req,res,next)=>{
   }).catch(error => {
       throw error;
   });
+
 })
 
 module.exports = gamesRoutes

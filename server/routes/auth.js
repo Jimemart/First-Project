@@ -10,7 +10,7 @@ var authRoutes = express.Router();
 /* GET home page. */
 authRoutes.post('/signup', (req, res, next) => {
   console.log(req.body)
-  const {username,password,email} = req.body;
+  const {username,password,email, games, platforms} = req.body;
 
   if (!username || !password || !email)
     return res.status(400).json({ message: 'Provide username and password' });
@@ -28,7 +28,9 @@ authRoutes.post('/signup', (req, res, next) => {
       username,
       password: hashPass,
       email,
-  
+      games,
+      platforms
+
     });
     return theUser.save()
     .then(user =>{
