@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GetListService } from './services/get-list.service'
 import { AuthService } from './services/auth.service'
+import { AddGameService } from './services/add-game.service'
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http'
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import {routes} from './routes';
 
 import { MultiformComponent } from './multiform/multiform.component';
 import { PickPlatComponent } from './pick-plat/pick-plat.component';
-
+import {IsLoggedInService} from './services/isLoggedIn.canactivate.service'
 import { ProfileComponent } from './profile/profile.component';
 import { LogInComponent } from './log-in/log-in.component';
 
@@ -24,9 +25,7 @@ import { LogInComponent } from './log-in/log-in.component';
     SignupComponent,
     MultiformComponent,
     PickPlatComponent,
-
     ProfileComponent,
-
     LogInComponent
   ],
   imports: [
@@ -35,7 +34,7 @@ import { LogInComponent } from './log-in/log-in.component';
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [GetListService, AuthService],
+  providers: [GetListService, AuthService, IsLoggedInService, AddGameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

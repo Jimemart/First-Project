@@ -1,3 +1,6 @@
 .selected{
   border: 2px solid red
 }
+.inline{
+  display: inline;
+}

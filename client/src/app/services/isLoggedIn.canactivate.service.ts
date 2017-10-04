@@ -10,7 +10,8 @@ export class IsLoggedInService implements CanActivate {
   constructor(public auth: AuthService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.auth.user) {
-      this.router.navigate(['']);
+      console.log("NO")
+      this.router.navigate(['login']);
       return false;
     }
     return true;
