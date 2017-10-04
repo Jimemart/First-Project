@@ -59,8 +59,11 @@ require('./passport/local');
 app.use(passport.initialize());
 app.use(passport.session());
 
+const gamesRoutes = require('./routes/prueba')
 const authRoutes = require('./routes/auth');
 app.use('/api', authRoutes);
+app.use('/api', gamesRoutes)
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
