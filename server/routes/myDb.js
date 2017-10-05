@@ -3,19 +3,19 @@ const router = express.Router()
 const Game = require('../models/Game')
 
 
-router.get('/find/db/:id', (req, res, next) =>{
-  const gameId = parseInt(req.params.id)
-  console.log(gameId)
-  Game.findOne({'id': gameId})
-      .then((response)=> {
-        console.log("en db", response)
-        if(response == null){
-        res.status(200).json("empty")}else{
-          res.status(200).json(response)
-        }
-      })
-      .catch((err)=> console.log(err))
-})
+// router.get('/find/db/:id', (req, res, next) =>{
+//   const gameId = parseInt(req.params.id)
+//
+//   Game.findOne({'id': gameId})
+//       .then((response)=> {
+//         console.log("en db", response)
+//         if(response == null){
+//         res.status(200).json("empty")}else{
+//           res.status(200).json(response)
+//         }
+//       })
+//       .catch((err)=> console.log(err))
+// })
 
 router.post('/save/game', (req, res, next)=>{
   const screenShot = req.body.game.screenshots[0].url.split('_thumb').join('_screenshot_huge')
