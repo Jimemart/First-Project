@@ -8,7 +8,6 @@ const client = igdb('d954ff37e0384de2413508acc74eb559');
 gamesRoutes.get("/giveme/:platforms", (req,res,next)=>{
    const myFilter = req.params.platforms.split("-")
    var text = myFilter.join(",")
-  console.log(text)
   client.games({
     filters:{
       'release_dates.platform-any' : text
@@ -18,8 +17,7 @@ gamesRoutes.get("/giveme/:platforms", (req,res,next)=>{
     order: 'popularity:desc',
 }, [
     'name',
-    'cover',
-    'popularity'
+    'cover'
 ]).then(response => {
       return res.status(200).json(response.body);
   }).catch(error => {
