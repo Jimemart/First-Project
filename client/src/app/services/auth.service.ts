@@ -12,6 +12,7 @@ export class AuthService {
   platList: Array<string>
   secondStep:Boolean
   firstStep:Boolean
+  searchBar:Boolean = true
 
   public user:object;
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -42,7 +43,7 @@ export class AuthService {
     }
 
     signup(username,password,email,games,platforms) {
-      console.log("entrooo")
+
       return this.http.post(`${this.BASE_URL}/api/signup`, {username,password,email, games, platforms}, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))

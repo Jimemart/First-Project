@@ -1,3 +1,7 @@
-<p>
-  profile works!
-</p>
+
+<h1> Hola {{myUser.username}}</h1>
+<div *ngFor = "let g of userGames">
+
+  <h2> {{g.name}}</h2>
+  <img [src] = 'g.cover'>
+</div>

@@ -1,0 +1,13 @@
+<div>
+  <input type="text" name="" [(ngModel)]="searchBar">
+  <button (click) ="searchGame()">Search</button>
+</div>
+
+<div *ngIf="foundGames.length === 6">
+
+ <div  *ngFor = 'let game of foundGames' class="inline" [attr.data-value]="game.id" #selectedGame >
+   <img *ngIf="game.cover" [src] ='game.cover.url'  (click) = "selected(selectedGame)">
+   <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="180"(click)="showme(myGame)">
+ </div>
+</div>
+<button (click)="sendGames()">NEXT</button>

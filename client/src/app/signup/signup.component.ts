@@ -20,17 +20,15 @@ export class SignupComponent implements OnInit {
     this.addGame.gamesToAdd.forEach(game =>{
       this.addGame.findGame(game)
               .subscribe((element)=>{
-                this.addGame.findInDb(element[0].id)
-                    .subscribe((answ)=>{
-                      if(answ == "hola"){
-                        console.log(element[0])
-                      }
-                    }
-
-                    )
+                if(element !== "full"){
+                  console.log(element[0])
+                this.addGame.saveGame(element[0])
+                    .subscribe()
+                }else{
+                  console.log("game is in db already")
+                }
               })
     })
-
 
   }
   signup(){

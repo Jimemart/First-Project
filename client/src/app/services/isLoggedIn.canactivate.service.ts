@@ -1,19 +1,23 @@
 import { CanActivate } from '@angular/router';
 import { Injectable }  from '@angular/core';
 import { Observable }  from 'rxjs/Rx';
-import { AuthService } from './auth.service'
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+
+import {AuthService} from './auth.service';
+
+
+const timeout = (nS) => new Promise((resolve) => setTimeout(resolve,nS * 1000));
 
 @Injectable()
 export class IsLoggedInService implements CanActivate {
 
-  constructor(public auth: AuthService, private router: Router) {}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.auth.user) {
-      console.log("NO")
-      this.router.navigate(['login']);
-      return false;
-    }
-    return true;
+  constructor(private auth:AuthService) { }
+
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    console.log("Checking can activate");
+
+    //return timeout(5).then(() => true);
+    //return this.auth.isLoggedIn().map(user => true)
+    return this.auth.getUser() ? true : false
+    //return false;
   }
 }

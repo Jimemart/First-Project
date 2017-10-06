@@ -11,7 +11,7 @@ export class MultiformComponent implements OnInit {
   constructor(public auth:AuthService) { }
 
   ngOnInit() {
-    
+
   }
 
 }

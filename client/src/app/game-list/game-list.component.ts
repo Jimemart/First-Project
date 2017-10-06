@@ -10,7 +10,7 @@ import { AddGameService } from '../services/add-game.service'
 })
 export class GameListComponent implements OnInit {
   games;
-  totalGames;
+
   myGames = [];
   constructor( public myService:GetListService,
                public auth:AuthService,
@@ -19,7 +19,6 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.myService.getList(this.auth.platList)
               .subscribe((games)=>{
-                this.totalGames = games
                 games.forEach(game =>{
                   if(game.cover){
                   game.cover.url = game.cover.url.split("t_thumb").join("t_thumb_2x")
@@ -33,14 +32,12 @@ export class GameListComponent implements OnInit {
 
 
   showme(elem){
-    let index = this.myGames.indexOf(elem.getAttribute('data-value'))
+    let index = this.addService.gamesToAdd.indexOf(elem.getAttribute('data-value'))
     if(index>=0){
       this.addService.gamesToAdd.splice(index,1)
-      this.myGames.splice(index,1)
       elem.classList.remove('selected')
     }else{
       this.addService.gamesToAdd.push(elem.getAttribute('data-value'))
-      this.myGames.push(elem.getAttribute('data-value'))
       elem.classList.add('selected')
     }
 
@@ -48,8 +45,7 @@ export class GameListComponent implements OnInit {
 
 
   sendGames(){
-    this.auth.gamesList = this.myGames
-    console.log(this.auth.gamesList)
+    this.auth.gamesList = this.addService.gamesToAdd
     this.auth.secondStep = true
   }
 

@@ -11,9 +11,12 @@ export class GetListService {
 
   getList(platforms){
     const stringofPlat = platforms.join("-")
-    console.log(stringofPlat)
-    
-    return this.http.get(`${this.BASE_URL}/api/giveme/${stringofPlat}`)
+    return this.http.get(`${this.BASE_URL}/api/giveme/${stringofPlat}/0/21`)
+          .map((res) => res.json())
+  }
+
+  getSuggestions(platforms){
+    return this.http.get(`${this.BASE_URL}/api/giveme/${platforms}/5/10`)
           .map((res) => res.json())
   }
 

@@ -1,0 +1,11 @@
+<h1>Inicio</h1>
+<div *ngFor = "let g of userGames">
+  <img [src] = 'g.cover' height="150">
+</div>
+<div *ngFor ="let plat of platRecom">
+  <h2>More games of {{plat.platform}}</h2>
+  <div *ngFor = "let game of plat.games">
+    <img *ngIf="game.cover === undefined"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="150">
+    <img *ngIf="game.cover.url" [src] = "game.cover.url" height="150">
+  </div>
+</div>

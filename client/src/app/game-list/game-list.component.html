@@ -3,4 +3,4 @@
     <img *ngIf="game.cover" [src] ='game.cover.url' (click)="showme(myGame)">
     <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="180"(click)="showme(myGame)">
   </div>
-  <button (click) ="sendGames()">NEXT</button>
+  <button (click)="sendGames()">NEXT</button>

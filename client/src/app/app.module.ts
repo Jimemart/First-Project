@@ -17,6 +17,11 @@ import { PickPlatComponent } from './pick-plat/pick-plat.component';
 import {IsLoggedInService} from './services/isLoggedIn.canactivate.service'
 import { ProfileComponent } from './profile/profile.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +31,18 @@ import { LogInComponent } from './log-in/log-in.component';
     MultiformComponent,
     PickPlatComponent,
     ProfileComponent,
-    LogInComponent
+    LogInComponent,
+    SearchBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MatButtonModule,
     RouterModule.forRoot(routes)
   ],
   providers: [GetListService, AuthService, IsLoggedInService, AddGameService],

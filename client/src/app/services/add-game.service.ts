@@ -14,14 +14,20 @@ export class AddGameService {
     return this.http.get(`${this.BASE_URL}/api/findone/${game}`)
             .map((res)=>res.json())
   }
-  
+
   findInDb(gameId){
-    console.log("llego")
-    console.log(gameId)
     return this.http.get(`${this.BASE_URL}/api/find/db/${gameId}`)
             .map((res)=>res.json())
   }
 
+  saveGame(game){
+    return this.http.post(`${this.BASE_URL}/api/save/game`, {game})
+            .map((res)=> res.json())
+  }
 
+  searchGame(game){
+    return this.http.get(`${this.BASE_URL}/api/search/${game}`)
+              .map((res)=> res.json())
+  }
 
 }

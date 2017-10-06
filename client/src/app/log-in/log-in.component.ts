@@ -21,6 +21,7 @@ export class LogInComponent implements OnInit {
   constructor(public auth:AuthService, public router:Router) { }
 
   ngOnInit() {
+
   }
 
   login(){
@@ -30,7 +31,7 @@ export class LogInComponent implements OnInit {
       this.auth.login(username, password)
       .map(user => console.log(user))
       .subscribe((user) =>{
-        this.router.navigate(['/profile'])
+        this.router.navigate(['/home'])
       });
 
     } else{
