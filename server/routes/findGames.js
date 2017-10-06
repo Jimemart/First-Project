@@ -16,7 +16,7 @@ router.get('/findone/:id', (req,res,next)=>{
     'popularity',
     'release_dates.platform',
     'summary',
-    'screenshots'
+    'screenshots',
   ]).then(response1 =>{
     const gameId = parseInt(response1.body[0].id)
     Game.findOne({'id' : gameId})
@@ -43,6 +43,23 @@ router.get('/search/:game', (req,res, next)=>{
     'cover'
   ]).then((response)=>{
     return res.status(200).json(response)
+  }).catch(err =>{
+    throw err
+  })
+})
+
+router.get('/find/game/:id', (req,res,next)=>{
+  const gameId = req.params.game
+  console.log(gameId)
+  client.games({
+    ids:[gameId],
+    limit : 1,
+    order: 'popularity:desc',
+  },[
+    'name',
+    'games'
+  ]).then((results)=>{
+    return res.status(200).json(results.body[0].games)
   }).catch(err =>{
     throw err
   })

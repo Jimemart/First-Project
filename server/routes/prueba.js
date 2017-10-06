@@ -20,7 +20,7 @@ gamesRoutes.get("/giveme/:platforms/:off/:qt", (req,res,next)=>{
     order: 'popularity:desc',
 }, [
     'name',
-    'cover'
+    'cover',
 ]).then(response => {
       return res.status(200).json(response.body);
   }).catch(error => {
