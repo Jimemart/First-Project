@@ -22,6 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { GamePageComponent } from './game-page/game-page.component';
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { HomeComponent } from './home/home.component';
     ProfileComponent,
     LogInComponent,
     SearchBarComponent,
-    HomeComponent
+    HomeComponent,
+    GamePageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,8 @@ import { HomeComponent } from './home/home.component';
     MdButtonModule,
     MdCheckboxModule,
     MatButtonModule,
+    MatInputModule,
+
     RouterModule.forRoot(routes)
   ],
   providers: [GetListService, AuthService, IsLoggedInService, AddGameService],

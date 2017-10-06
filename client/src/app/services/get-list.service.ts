@@ -11,13 +11,17 @@ export class GetListService {
 
   getList(platforms){
     const stringofPlat = platforms.join("-")
-    return this.http.get(`${this.BASE_URL}/api/giveme/${stringofPlat}/0/21`)
+    return this.http.get(`${this.BASE_URL}/api/giveme/${stringofPlat}/10/21`)
           .map((res) => res.json())
   }
 
   getSuggestions(platforms){
-    return this.http.get(`${this.BASE_URL}/api/giveme/${platforms}/5/10`)
+    return this.http.get(`${this.BASE_URL}/api/giveme/${platforms}/8/10`)
           .map((res) => res.json())
   }
 
+  getSimilarGames(id){
+    return this.http.get(`${this.BASE_URL}/api/find/game/${id}`)
+            .map((res)=>res.json())
+  }
 }

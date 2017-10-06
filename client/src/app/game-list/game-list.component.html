@@ -1,6 +1,12 @@
-  <div *ngFor="let game of games" [attr.data-value]="game.id" class="inline" #myGame>
+<div class="header">
+  <h3> Games</h3>
+  <i class="material-icons next" (click)=' sendAndNext()'>navigate_next</i>
+</div>
 
-    <img *ngIf="game.cover" [src] ='game.cover.url' (click)="showme(myGame)">
-    <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="180"(click)="showme(myGame)">
+<div class="games">
+  <div *ngFor="let game of games" [attr.data-value]="game.id" class="inline" #myGame>
+  <img *ngIf="!game.cover" class="bottom"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="160"(click)="showme(myGame)">
+    <img *ngIf="game.cover" [src] ='game.cover.url' height="160" (click)="showme(myGame)">
+  </div>
   </div>
   <button (click)="sendGames()">NEXT</button>

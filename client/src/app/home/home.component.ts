@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   userGames: Array<Object> = []
   platRecom: Array<Object> = []
   platformsName:Array<string> = []
+  relevantGames:Array<object> = []
+  youMayLike: Array<object> = []
+
   constructor( private auth:AuthService,
               private add:AddGameService,
               private getList: GetListService) { }
@@ -23,12 +26,20 @@ export class HomeComponent implements OnInit {
     this.myGamesId = this.user.games
     this.getGames(this.myGamesId)
     this.getGamesForPlat(this.user.platforms)
+    this.getRelatedGames(this.getRandomId(this.user.games))
+
   }
+
+getRandomId(arr){
+  var random = Math.floor(Math.random() * ((arr.length-1) - 1 ))
+  return arr[random]
+}
 
 getGames(gamesArr){
   gamesArr.forEach(e =>{
-    this.add.findInDb(e)
+    this.add.findGame(e)
             .subscribe(game =>{
+              this.add.turnPic(game)
               this.userGames.push(game)
             })
   })
@@ -38,17 +49,35 @@ getGamesForPlat(platArr){
   platArr.forEach(plat =>{
       this.getList.getSuggestions(plat)
             .subscribe(games =>{
-              games.forEach(game =>{
-                if(game.cover !== undefined){
-                game.cover.url = game.cover.url.split("t_thumb").join("t_thumb_2x")
-                }
-              })
+              this.add.turnPic(games)
               this.platRecom.push(
                 {platform : this.transPlat(plat),
                  games : games})
             })
           })
 }
+
+getRelatedGames(game){
+
+    this.getList.getSimilarGames(game)
+        .subscribe(newGames =>{
+          this.relevantGames.push(newGames)
+          this.getInterested(this.relevantGames)
+        })
+}
+
+getInterested(gameArr){
+  gameArr[0].forEach(e =>{
+    this.add.findGame(e)
+            .subscribe(game =>{
+              this.add.turnPic(game)
+              this.youMayLike.push(game)
+
+            })
+  })
+}
+
+
 
 transPlat(num){
     let translation = ""
@@ -67,6 +96,9 @@ transPlat(num){
       break;
   }
   return translation
+}
+goToPage(game){
+  this.add.navigateToGamePage(game)
 }
 
 }

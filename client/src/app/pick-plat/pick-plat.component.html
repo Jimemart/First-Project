@@ -1,14 +1,19 @@
-<div class="inline" [attr.data-value]="48" #play>
-  <img src="https://static.blog.playstation.com/wp-content/uploads/avatars//Playstation-logo.png?m=1466514976" (click)="addPlat(play)" height="70">
+<div class="header">
+  <h3> Platforms </h3>
+  <i class="material-icons next" (click)='sendAndNext()'>navigate_next</i>
+  <!-- <button (click)='sendAndNext()'>Next</button> -->
 </div>
-<div class="inline" [attr.data-value]="49" #xbox>
-  <img src="http://assets.vg247.com/current//2016/03/xbox-one-logo.png" (click)="addPlat(xbox)" height="70">
+<div class="container">
+<div class="inline left" [attr.data-value]="48" #play>
+  <img src="https://static.blog.playstation.com/wp-content/uploads/avatars//Playstation-logo.png?m=1466514976" (click)="addPlat(play)" height="160">
 </div>
-<div class="inline" [attr.data-value]="6" #pc>
-  <img src="http://www.findmysoft.com/img/news/10-Amazing-Stats-Facts-You-Probably-Don-t-Know-About-Steam.jpg" (click)="addPlat(pc)" height="70">
+<div class="inline right" [attr.data-value]="49" #xbox>
+  <img src="http://image.techtimes.com/data/images/full/11675/xbox-one-logo.jpg" (click)="addPlat(xbox)" height="160">
 </div>
-<div class="inline" [attr.data-value]="41" #nintendo>
-  <img src="http://www.brandemia.org/sites/default/files/nintendo_switch_logo.jpg" (click)="addPlat(nintendo)" height="70">
+<div class="inline left" [attr.data-value]="6" #pc>
+  <img src="https://cdn.worldvectorlogo.com/logos/windows-store.svg" class="bottom" (click)="addPlat(pc)" height="160">
 </div>
-<button (click)='sendAndNext()'>Next</button>
-<div class="button-row">
+<div class="inline right" [attr.data-value]="41" #nintendo>
+  <img src="http://cdn3.computerhoy.com/sites/computerhoy.com/files/editores/user-75989/c1csmnoviaaziww.jpg" class="bottom" (click)="addPlat(nintendo)" height="160">
+</div>
+</div>

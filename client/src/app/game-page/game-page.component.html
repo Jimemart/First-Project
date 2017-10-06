@@ -1,0 +1,7 @@
+<div *ngIf="game[0]">
+<img [src]='game[0].screenshots[0].url' height="400">
+<p>{{game[0].summary}}</p>
+</div>
+<div *ngIf = "users[0]">
+  <h3 *ngFor="let u of users">{{u.username}}</h3>
+</div>

@@ -20,12 +20,14 @@ export class ProfileComponent implements OnInit {
 
   }
 
+
   getGames(gamesArr){
-    gamesArr.forEach(e => {
-      this.add.findInDb(e)
+    gamesArr.forEach(e =>{
+      this.add.findGame(e)
               .subscribe(game =>{
+                this.add.turnPic(game)
                 this.userGames.push(game)
               })
     })
-  }
+}
 }

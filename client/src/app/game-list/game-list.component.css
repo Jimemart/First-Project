@@ -5,3 +5,32 @@
 .selected{
   border: 2px solid red
 }
+.bottom{
+  margin-top:16px;
+}
+.container{
+  position: absolute;
+  bottom:208px;
+}
+.next{
+  font-size:30px;
+  position: fixed;
+  top:33px;
+  right: 26px;
+}
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+}
+.games{
+  position: absolute;
+  top: 172px;
+}

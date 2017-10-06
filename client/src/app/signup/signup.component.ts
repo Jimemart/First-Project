@@ -17,18 +17,18 @@ export class SignupComponent implements OnInit {
   constructor( public auth:AuthService, public addGame:AddGameService) { }
 
   ngOnInit() {
-    this.addGame.gamesToAdd.forEach(game =>{
-      this.addGame.findGame(game)
-              .subscribe((element)=>{
-                if(element !== "full"){
-                  console.log(element[0])
-                this.addGame.saveGame(element[0])
-                    .subscribe()
-                }else{
-                  console.log("game is in db already")
-                }
-              })
-    })
+    // this.addGame.gamesToAdd.forEach(game =>{
+    //   this.addGame.findGame(game)
+    //           .subscribe((element)=>{
+    //             if(element !== "full"){
+    //               console.log(element[0])
+    //             this.addGame.saveGame(element[0])
+    //                 .subscribe()
+    //             }else{
+    //               console.log("game is in db already")
+    //             }
+    //           })
+    // })
 
   }
   signup(){
