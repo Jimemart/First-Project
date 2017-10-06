@@ -18,15 +18,16 @@ router.get('/findone/:id', (req,res,next)=>{
     'summary',
     'screenshots',
   ]).then(response1 =>{
-    const gameId = parseInt(response1.body[0].id)
-    Game.findOne({'id' : gameId})
-        .then((response)=>{
-          if(response == null){
-            return res.status(200).json(response1.body)
-          }else{
-            return res.status(200).json("full")
-          }
-        })
+    return res.status(200).json(response1.body)
+    // const gameId = parseInt(response1.body[0].id)
+    // Game.findOne({'id' : gameId})
+    //     .then((response)=>{
+    //       if(response == null){
+    //         return res.status(200).json(response1.body)
+    //       }else{
+    //         return res.status(200).json("full")
+    //       }
+    //     })
   }).catch(err=>{
     throw err
   })
