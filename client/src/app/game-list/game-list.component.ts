@@ -10,7 +10,7 @@ import { AddGameService } from '../services/add-game.service'
 })
 export class GameListComponent implements OnInit {
   games;
-
+  nosearching = false
   myGames = [];
   constructor( public myService:GetListService,
                public auth:AuthService,
@@ -47,6 +47,10 @@ export class GameListComponent implements OnInit {
   sendGames(){
     this.auth.gamesList = this.addService.gamesToAdd
     this.auth.secondStep = true
+  }
+  searchingGames(val){
+    this.nosearching = val;
+    
   }
 
 }

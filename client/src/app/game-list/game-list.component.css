@@ -29,6 +29,7 @@
   font-size:24px;
   text-align:center;
   letter-spacing: 2px;
+  z-index: 1;
 }
 .games{
   position: absolute;

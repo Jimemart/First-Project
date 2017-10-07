@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 import { AddGameService } from '../services/add-game.service'
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+  @Output() onFocus = new EventEmitter<boolean>();
+
   searchBar:string
   foundGames:Array<object> = []
   selectedGames:Array<string> = []
@@ -15,6 +18,7 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {
   }
   searchGame(){
+    this.onFocus.emit(true)
     this.add.searchGame(this.searchBar)
             .subscribe(found => {
               found.body.forEach(game =>{
@@ -23,7 +27,6 @@ export class SearchBarComponent implements OnInit {
               }
               })
               this.foundGames = found.body
-              console.log(this.foundGames)
             })
   }
   selected(elem){
@@ -40,5 +43,6 @@ export class SearchBarComponent implements OnInit {
     this.auth.gamesList = this.add.gamesToAdd
     this.auth.secondStep = true
   }
+
 
 }

@@ -1,10 +1,9 @@
-<form >
-  <h2> Login </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+<div class="header" >
+  <h3> Log in </h3>
+</div>
+<form class="signup-form">
+  <input type="text" [(ngModel)]="formInfo.username" name="username" class="signup" placeholder="Username"/>
+  <input type="password" [(ngModel)]="formInfo.password" name="password"  class="signup"  placeholder="Password"/>
 
-  <button (click)="login()"> login </button>
+  <button (click)="login()" class="sign-up-butt"> LOG IN </button>
 </form>

@@ -1,14 +1,15 @@
+<div class="header" >
+  <h3> New User</h3>
+</div>
+<form class="signup-form">
 
-<form >
-  <h2> Signup </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> Email </label>
-  <input type="email" [(ngModel)]="formInfo.email" name="email"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <input type="text" [(ngModel)]="formInfo.username" name="username" class="signup" placeholder="Set a user name"/>
 
-  <button (click)="signup()"> signup </button>
+  <input type="email" [(ngModel)]="formInfo.email" name="email" class="signup" placeholder="Set your mail"/>
+
+  <input type="password" [(ngModel)]="formInfo.password" name="password" class="signup" placeholder="Set your password"/>
+
+  <input type="password" name="" value="" class="signup" placeholder="Confirm your password">
+
+  <button (click)="signup()" class="sign-up-butt"> SIGN UP </button>
 </form>

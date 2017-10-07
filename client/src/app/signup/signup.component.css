@@ -1,0 +1,51 @@
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+  z-index: 1;
+}
+.signup{
+  display: block;
+  width: 328px;
+  height: 58px;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.56);
+  color: rgba(255, 255, 255, 0.56);
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+
+}
+.signup-form{
+ position: absolute;
+ top:194px;
+ width: 100%;
+ text-align: center;
+}
+::-webkit-input-placeholder {
+   padding-left: 52px;
+   font-family: 'Titillium Web', sans-serif;
+   font-size: 16px;
+   letter-spacing: 2px;
+}
+
+.sign-up-butt{
+  margin-top:29px;
+  width: 328px;
+  height: 40px;
+  background: #FD2249;
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  border:none;
+  letter-spacing: 2px;
+}

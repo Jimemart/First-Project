@@ -1,7 +1,32 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .inline{
   display: inline-block;
   margin: 10px;
 }
 .selected{
   border: 1px solid red;
+}
+.searchBar{
+  position: absolute;
+    top: 104px;
+    left: 8px;
+    width: 340px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid grey;
+    color:white;
+}
+.search{
+  position:absolute;
+  top:104px;
+  right:16px;
+  color:grey;
+}
+.searchBar:focus{
+  border:none !important;
+}
+.game-list{
+  position: absolute;
+  top: 172px;
 }
