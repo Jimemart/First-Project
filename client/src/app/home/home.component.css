@@ -1,3 +1,17 @@
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+  z-index:1
+}
+
 html {
     overflow: scroll;
     overflow-x: hidden;
@@ -6,40 +20,83 @@ html {
     width: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
 }
-/* optional: show position indicator in red */
-/*::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}*/
-
 #wrapper{
   max-width:100%;
   position:relative;
+  color:white;
+  height: 220px;
 }
-
-button:focus {outline:0 !important;}
-
-
+.contenedor{
+  position: relative;
+  top:92px;
+}
+.sec-title{
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+}
+.sec-par{
+  font-family: 'Titillium Web', sans-serif;
+  font-size:12px;
+  text-align: center;
+  color:rgba(255, 255, 255, 0.48);
+  width:238px;
+  margin: 0 auto;
+  font-weight: light;
+}
 .module-section{
   max-width: 100%;
   overflow: hidden;
   overflow-x:scroll;
-
-
 }
-
 ul{
-width:200em;
+width:100em;
 list-style-type:none;
-padding:50px 0 50px 0;
-
-
-
+padding:20px 0 20px 0;
+margin:0;
 }
-
-#content{
+.content{
   position:relative;
+  height: 250px;
 }
 ul > li {
   display: inline-block;
   margin: 10px;
+  vertical-align: top;
+}
+
+.menu{
+  position: fixed;
+  bottom:0;
+  height: 56px;
+  background: #212121;
+  width: 100%;
+}
+.nav-bar{
+  color:rgba(255, 255, 255, 0.64);
+  vertical-align: middle;
+
+}
+#active{
+  padding-top:5px;
+
+}
+#active .nav-bar{
+  color:white;
+}
+.icons p{
+  margin:0;
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 12px;
+}
+.icons{
+  vertical-align: top;
+  padding-top:15px;
+  width: 24%;
+  text-align: center;
+  display: inline-block;
 }

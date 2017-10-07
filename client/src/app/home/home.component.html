@@ -1,43 +1,66 @@
-
-<h1>Inicio</h1>
-
+<div class="header">
+  <h3> Home </h3>
+</div>
+<div class="contenedor">
 <div id="wrapper">
+  <h3 class="sec-title">My games </h3>
+  <p class="sec-par">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>
   <div class="module-section clearfix">
-   <ul id="content">
+   <ul class="content">
     <li *ngFor="let g of userGames">
       <div [attr.data-value]="g[0].id" (click)="goToPage(game)" #game>
         <img [src] = 'g[0].cover.url' height="106">
       </div>
     </li>
    </ul>
- </div><!--end of module-section-->
-
-
-<div *ngFor ="let plat of platRecom">
-  <h2>More games of {{plat.platform}}</h2>
-  <div id="wrapper">
+ </div>
+</div>
+  <div id="wrapper" *ngFor ="let plat of platRecom">
+    <h3 class="sec-title">More games of {{plat.platform}}</h3>
+      <p class="sec-par">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>
     <div class="module-section clearfix">
-     <ul id="content">
+     <ul class="content">
       <li *ngFor="let game of plat.games">
         <div [attr.data-value]='game.id' (click)="goToPage(gameplat)" #gameplat>
-          <img *ngIf="!game.cover" src = "http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" height="150">
+          <img *ngIf="!game.cover" src = "http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" height="106">
           <img *ngIf="game.cover" [src] = "game.cover.url" height="106">
         </div>
       </li>
      </ul>
    </div><!--end of module-section-->
 </div>
-</div>
 
-<h2>You might also like</h2>
+
+
 <div id="wrapper">
+  <h3 class="sec-title">You might also like</h3>
+    <p class="sec-par">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>
   <div class="module-section clearfix">
-   <ul id="content">
+   <ul class="content">
     <li *ngFor="let game of youMayLike">
       <div [attr.data-value]='game[0].id' (click)="goToPage(gamelike)" #gamelike>
         <img *ngIf='game[0].cover' [src]= 'game[0].cover.url' height="106">
-        <img *ngIf="!game[0].cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="150">
+        <img *ngIf="!game[0].cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="106">
       </div>
     </li>
    </ul>
  </div>
+</div>
+</div>
+<div class="menu">
+<div class="icons" id="active">
+  <a [routerLink] ="home">
+  <i class="material-icons nav-bar">home</i>
+  <p>Home</p>
+</a>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">explore</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">perm_identity</i>
+</div>
+</div>
