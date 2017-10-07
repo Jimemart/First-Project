@@ -23,7 +23,7 @@ import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { GamePageComponent } from './game-page/game-page.component';
-import {MatInputModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import {MatInputModule} from '@angular/material';
     MdButtonModule,
     MdCheckboxModule,
     MatButtonModule,
-    MatInputModule,
+    MatTabsModule,
 
     RouterModule.forRoot(routes)
   ],

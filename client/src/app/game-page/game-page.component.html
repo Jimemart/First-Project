@@ -1,16 +1,17 @@
+<div *ngIf="game[0]">
 <div class="carousel">
     <div class="carousel-inner">
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
         <div class="carousel-item">
-            <img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">
+            <img [src]='game[0].screenshots[0].url' height="400">
               </div>
-        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-        <div class="carousel-item">
-            <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
-        </div>
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item">
-            <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
+              <div class="information">
+                <span class="plat">{{this.platformsGame}}</span>
+                <p class="summary">{{game[0].summary}}</p>
+              </div>
+              <img [src]='game[0].screenshots[0].url'>
         </div>
 
         <ol class="carousel-indicators">
@@ -18,18 +19,42 @@
                 <label for="carousel-1" class="carousel-bullet">•</label>
             </li>
             <li>
-                <label for="carousel-2" class="carousel-bullet">•</label>
-            </li>
-            <li>
                 <label for="carousel-3" class="carousel-bullet">•</label>
             </li>
         </ol>
     </div>
 </div>
-<div *ngIf="game[0]">
-<img [src]='game[0].screenshots[0].url' height="400">
-<p>{{game[0].summary}}</p>
 </div>
-<div *ngIf = "users[0]">
-  <h3 *ngFor="let u of users">{{u.username}}</h3>
+<nav>
+  <ul>
+      <li class="current game-comp" #users1 (click)="setCurrent(users1, group)" data-value="1">Users</li>
+      <li class="game-comp" #group (click)="setCurrent(group,users1)" data-value="2">Groups</li>
+  </ul>
+</nav>
+<div *ngIf = "users[0] && corresponds" class="each" >
+  <div *ngFor="let u of users" >
+    <img class="avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
+    <span class="usuarios">{{u.username}}</span>
+  </div>
+</div>
+
+<div class="set">
+<button  *ngIf="game[0]" class="addGame">Add {{game[0].name}} to my games</button>
+</div>
+
+<div class="menu">
+<div class="icons">
+  <a [routerLink] ="['/home']">
+  <i class="material-icons nav-bar">home</i>
+</a>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">explore</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">perm_identity</i>
+</div>
 </div>
