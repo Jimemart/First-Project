@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GetListService } from './services/get-list.service'
+import { EditUserService } from './services/edit-user.service'
 import { AuthService } from './services/auth.service'
 import { AddGameService } from './services/add-game.service'
 import { AppComponent } from './app.component';
@@ -50,7 +51,11 @@ import {MatTabsModule} from '@angular/material';
 
     RouterModule.forRoot(routes)
   ],
-  providers: [GetListService, AuthService, IsLoggedInService, AddGameService],
+  providers: [GetListService,
+              AuthService,
+              IsLoggedInService,
+              AddGameService,
+              EditUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

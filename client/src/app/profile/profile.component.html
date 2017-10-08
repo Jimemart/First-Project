@@ -42,7 +42,7 @@
   </div>
   <div class="num">
     <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
-    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h2 *ngIf="!profileUser.groups">0</h2>
     <h4>GROUPS</h4>
   </div>
 </div>
@@ -54,11 +54,12 @@
   </div>
   <div class="num1">
     <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
-    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h2 *ngIf="!profileUser.groups">0</h2>
     <h4>GROUPS</h4>
   </div>
   <div class="num1">
-    <button class="add">Follow</button>
+    <button *ngIf="notfollow" class="add" (click)="followUser()">Follow</button>
+    <button *ngIf="!notfollow" class="add" (click)="followUser()">Unfollow</button>
   </div>
 </div>
 <nav>
@@ -97,6 +98,8 @@
 </a>
 </div>
 <div *ngIf="!myProfile" class="icons">
+  <a *ngIf="LoggedUser" [routerLink]="['/profile', LoggedUser._id]">
   <i class="material-icons nav-bar">perm_identity</i>
+</a>
 </div>
 </div>

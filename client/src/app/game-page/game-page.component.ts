@@ -3,6 +3,7 @@ import { AddGameService } from '../services/add-game.service'
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service'
+import { EditUserService } from '../services/edit-user.service'
 
 @Component({
   selector: 'app-game-page',
@@ -17,9 +18,11 @@ export class GamePageComponent implements OnInit {
   platformsGame:string = ''
   showButton:boolean = true
   loggedUser:Object
+  buttonNotClicked:boolean = true
   constructor(public add: AddGameService,
               public route:ActivatedRoute,
-              public auth:AuthService) { }
+              public auth:AuthService,
+              public edit: EditUserService) { }
 
   ngOnInit() {
     this.loggedUser = this.auth.user
@@ -83,7 +86,11 @@ checkIfUserHasThisGame(gameId){
   })
 }
 addGameToUser(gameId){
-  console.log(gameId)
+  let totalGames = this.loggedUser['games']
+  totalGames.push(gameId.toString())
+  this.buttonNotClicked = false;
+  this.edit.addGame(this.loggedUser['_id'], totalGames)
+          .subscribe(user => this.getUsers(this.gameId))
 }
 
 

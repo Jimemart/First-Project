@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
 
 getRandomId(arr){
   var random = Math.floor(Math.random() * ((arr.length-1) - 1 ))
+  console.log(arr)
+  console.log(arr[random])
   return arr[random]
 }
 
