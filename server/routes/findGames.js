@@ -51,7 +51,7 @@ router.get('/search/:game', (req,res, next)=>{
 
 router.get('/find/game/:id', (req,res,next)=>{
   const gameId = req.params.game
-  console.log(gameId)
+
   client.games({
     ids:[gameId],
     limit : 1,

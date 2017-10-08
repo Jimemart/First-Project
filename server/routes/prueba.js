@@ -2,7 +2,7 @@ const express = require('express');
 const myFunctions = require('../config/gamelist')
 const gamesRoutes = express.Router()
 const igdb = require('igdb-api-node').default;
-const client = igdb('d954ff37e0384de2413508acc74eb559');
+const client = igdb('8641eb6cc610373fd52d89bfd75aa6f5');
 
 
 gamesRoutes.get("/giveme/:platforms/:off/:qt", (req,res,next)=>{
