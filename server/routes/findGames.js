@@ -1,7 +1,7 @@
   const express = require('express');
 const router = express.Router()
 const igdb = require('igdb-api-node').default;
-const client = igdb('d954ff37e0384de2413508acc74eb559');
+const client = igdb('30da31e7cb07ece61239b92610d20f54');
 const Game = require('../models/Game')
 
 router.get('/findone/:id', (req,res,next)=>{
