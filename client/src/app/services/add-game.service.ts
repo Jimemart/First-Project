@@ -54,5 +54,10 @@ export class AddGameService {
     game = game.getAttribute('data-value')
     this.route.navigate(['/game',game])
   }
+  searchProfile(id){
+    console.log('the id',id)
+    return this.http.get(`${this.BASE_URL}/api/user/profile/${id}`)
+              .map((res)=>res.json())
+  }
 
 }

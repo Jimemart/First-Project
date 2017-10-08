@@ -1,7 +1,102 @@
 
-<h1> Hola {{myUser.username}}</h1>
-<div *ngFor = "let g of userGames">
+<div class="header">
+  <h3 *ngIf='myProfile'> My Profile </h3>
+  <h3 *ngIf="profileUser && !myProfile">{{profileUser.username}}</h3>
+</div>
+<div *ngIf="profileUser">
+<div class="carousel">
+    <div class="carousel-inner">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item">
+          <div class="main-view">
+            <img *ngIf="profileUser.image" [src]='profileUser.image' height="88" id="profile-pic">
+            <img *ngIf="!profileUser.image" src= "https://avatarfiles.alphacoders.com/840/84098.jpg" height="88" id="profile-pic">
+            <h3 class="name">{{profileUser.username}}</h3>
+            <p *ngIf="profileUser.location"><span>{{profileUser.location.city}}</span> / <span>{{profileUser.location.country}}</span></p>
+            <p *ngIf="!profileUser.location" class="location"><span>City</span> / <span>Country</span></p>
+          </div>
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+              <div class="information">
+              <h1 class="saludo"> Hola {{profileUser.username}}</h1>
+              </div>
 
-  <h2> {{g.name}}</h2>
-  <img [src] = 'g.cover'>
+        </div>
+
+        <ol class="carousel-indicators">
+            <li>
+                <label for="carousel-1" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-3" class="carousel-bullet">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
+<div *ngIf="myProfile"class="info-friends-group">
+  <div class="num">
+    <h2 *ngIf="profileUser.friends">{{profileUser.friends.length}}</h2>
+    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h4>FRIENDS</h4>
+  </div>
+  <div class="num">
+    <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
+    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h4>GROUPS</h4>
+  </div>
+</div>
+<div *ngIf="!myProfile"class="info-friends-group">
+  <div class="num1">
+    <h2 *ngIf="profileUser.friends">{{profileUser.friends.length}}</h2>
+    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h4>FRIENDS</h4>
+  </div>
+  <div class="num1">
+    <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
+    <h2 *ngIf="!profileUser.friends">0</h2>
+    <h4>GROUPS</h4>
+  </div>
+  <div class="num1">
+    <button class="add">Follow</button>
+  </div>
+</div>
+<nav>
+  <ul>
+      <li class="current game-comp" #games data-value="1">Games</li>
+      <li class="game-comp" #activity data-value="2">Activity</li>
+      <li class="game-comp" #posts  data-value="3">Posts</li>
+  </ul>
+</nav>
+<div class="usergames">
+  <div *ngFor="let game of userGames" class="game-inf">
+    <a [routerLink] = '["/game", game[0].id]'>
+    <img [src] = "game[0].screenshots[0].url" height="93" width="156">
+      </a>
+    <h5>{{game[0].name}}</h5>
+
+  </div>
+</div>
+</div>
+<div class="menu">
+<div class="icons" >
+  <a [routerLink] ="['/home']">
+  <i class="material-icons nav-bar">home</i>
+</a>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">explore</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+</div>
+<div *ngIf="myProfile"class="icons" id="active">
+  <a *ngIf="LoggedUser" [routerLink]="['/profile', LoggedUser._id]">
+  <i class="material-icons nav-bar">perm_identity</i>
+  <p>Profile</p>
+</a>
+</div>
+<div *ngIf="!myProfile" class="icons">
+  <i class="material-icons nav-bar">perm_identity</i>
+</div>
 </div>

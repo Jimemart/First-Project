@@ -12,7 +12,7 @@ export const routes:Routes= [
   {path: '',component:MultiformComponent},
   {path: 'list', component:GameListComponent },
   {path: 'login', component: LogInComponent},
-  {path: 'profile', component: ProfileComponent },
+  {path: 'profile/:id', component: ProfileComponent },
   {path: 'home', component: HomeComponent},
   {path: 'game/:id', component: GamePageComponent}
 ]
