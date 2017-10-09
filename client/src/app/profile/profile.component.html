@@ -41,9 +41,12 @@
     <h4>FRIENDS</h4>
   </div>
   <div class="num">
+
     <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
     <h2 *ngIf="!profileUser.groups">0</h2>
+    <a [routerLink] = "['/groups', profileUser._id]" class="toGroups">
     <h4>GROUPS</h4>
+  </a>
   </div>
 </div>
 <div *ngIf="!myProfile"class="info-friends-group">
@@ -53,9 +56,12 @@
     <h4>FRIENDS</h4>
   </div>
   <div class="num1">
+
     <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
     <h2 *ngIf="!profileUser.groups">0</h2>
+    <a [routerLink] = "['/groups', profileUser._id]" class="toGroups">
     <h4>GROUPS</h4>
+  </a>
   </div>
   <div class="num1">
     <button *ngIf="notfollow" class="add" (click)="followUser()">Follow</button>

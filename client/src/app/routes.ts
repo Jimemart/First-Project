@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component'
 import {IsLoggedInService } from './services/isLoggedIn.canactivate.service'
 import { HomeComponent } from './home/home.component'
 import { GamePageComponent } from './game-page/game-page.component'
+import { GroupsPageComponent } from './groups-page/groups-page.component'
 
 export const routes:Routes= [
   {path: '',component:MultiformComponent},
@@ -14,5 +15,6 @@ export const routes:Routes= [
   {path: 'login', component: LogInComponent},
   {path: 'profile/:id', component: ProfileComponent },
   {path: 'home', component: HomeComponent},
-  {path: 'game/:id', component: GamePageComponent}
+  {path: 'game/:id', component: GamePageComponent},
+  {path: 'groups/:id', component: GroupsPageComponent}
 ]

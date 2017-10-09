@@ -184,6 +184,11 @@
   font-size: 12px;
   margin-top: 0px;
 }
+.toGroups > h4{
+  margin: 0;
+  font-size: 12px;
+  color:white;
+}
 .num1{
   display: inline-block;
   width:31%;

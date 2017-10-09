@@ -25,6 +25,8 @@ import {MatButtonModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { GamePageComponent } from './game-page/game-page.component';
 import {MatTabsModule} from '@angular/material';
+import { GroupsPageComponent } from './groups-page/groups-page.component';
+import { GroupFormComponent } from './group-form/group-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {MatTabsModule} from '@angular/material';
     LogInComponent,
     SearchBarComponent,
     HomeComponent,
-    GamePageComponent
+    GamePageComponent,
+    GroupsPageComponent,
+    GroupFormComponent
   ],
   imports: [
     BrowserModule,
