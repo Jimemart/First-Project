@@ -8,9 +8,11 @@ import {IsLoggedInService } from './services/isLoggedIn.canactivate.service'
 import { HomeComponent } from './home/home.component'
 import { GamePageComponent } from './game-page/game-page.component'
 import { GroupsPageComponent } from './groups-page/groups-page.component'
+import { WelcomeComponent } from './welcome/welcome.component'
 
 export const routes:Routes= [
-  {path: '',component:MultiformComponent},
+  {path: '',component:WelcomeComponent},
+  {path: 'signup', component:MultiformComponent},
   {path: 'list', component:GameListComponent },
   {path: 'login', component: LogInComponent},
   {path: 'profile/:id', component: ProfileComponent },

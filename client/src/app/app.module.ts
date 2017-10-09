@@ -27,6 +27,7 @@ import { GamePageComponent } from './game-page/game-page.component';
 import {MatTabsModule} from '@angular/material';
 import { GroupsPageComponent } from './groups-page/groups-page.component';
 import { GroupFormComponent } from './group-form/group-form.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { GroupFormComponent } from './group-form/group-form.component';
     HomeComponent,
     GamePageComponent,
     GroupsPageComponent,
-    GroupFormComponent
+    GroupFormComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

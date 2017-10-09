@@ -1,0 +1,19 @@
+.butt{
+  margin-top:29px;
+  width: 328px;
+  height: 40px;
+  background: #FD2249;
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  border:none;
+  letter-spacing: 2px;
+  display: block;
+  margin: 0 auto;
+
+}
+.top{
+  position: relative;
+  top: 407px;
+  margin-bottom: 8px;
+}
