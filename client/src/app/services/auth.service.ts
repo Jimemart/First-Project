@@ -11,9 +11,9 @@ export class AuthService {
 
   gamesList:Array<string>
   platList: Array<string>
-  secondStep:Boolean
-  firstStep:Boolean
-  searchBar:Boolean = true
+  secondStep:boolean
+  firstStep:boolean
+  searchBar:boolean = true
 
   public user:object;
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
