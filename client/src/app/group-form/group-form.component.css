@@ -1,0 +1,50 @@
+.inline{
+  display: inline-block;
+  margin: 10px;
+}
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+  z-index:1
+}
+.contain{
+  position: relative;
+  top:147px;
+}
+
+.search{
+  position:absolute;
+  top:140px;
+  right:16px;
+  color:grey;
+  font-size: 24px;
+}
+.signup{
+  display: block;
+  width: 328px;
+  height: 58px;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.56);
+  color: rgba(255, 255, 255, 0.56);
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.addnew{
+  position: fixed;
+  top:40px;
+  right: 40px;
+  margin: 0;
+  color: #FD2249;
+  font-size: 12px;
+}

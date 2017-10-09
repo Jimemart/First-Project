@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-groups-page',
   templateUrl: './groups-page.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsPageComponent implements OnInit {
   addGroup:boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
-
+addNewGroup(){
+  this.addGroup = true;
+}
 }
