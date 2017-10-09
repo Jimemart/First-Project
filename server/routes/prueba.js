@@ -1,8 +1,10 @@
 const express = require('express');
+require('dotenv').config()
 const myFunctions = require('../config/gamelist')
 const gamesRoutes = express.Router()
 const igdb = require('igdb-api-node').default;
-const client = igdb('30da31e7cb07ece61239b92610d20f54');
+const MY_API = process.env.IGDB_API
+const client = igdb(MY_API);
 
 
 gamesRoutes.get("/giveme/:platforms/:off/:qt", (req,res,next)=>{

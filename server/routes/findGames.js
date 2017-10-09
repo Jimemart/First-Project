@@ -1,10 +1,13 @@
-  const express = require('express');
+require('dotenv').config()
+const express = require('express');
 const router = express.Router()
 const igdb = require('igdb-api-node').default;
-const client = igdb('30da31e7cb07ece61239b92610d20f54');
+const MY_API = process.env.IGDB_API
+const client = igdb(MY_API);
 const Game = require('../models/Game')
 
 router.get('/findone/:id', (req,res,next)=>{
+
   const gameId = req.params.id
   console.log(gameId)
   client.games({
