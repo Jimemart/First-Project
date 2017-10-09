@@ -50,12 +50,31 @@ router.post('/new/group', (req,res,next)=>{
     platform: req.body.groupInfo.platform,
     groupImage: req.body.groupInfo.groupImage,
     gameId : req.body.groupInfo.gameId,
+    gameName: req.body.groupInfo.gameName,
     users:req.body.groupInfo.users
   }).save()
     .then(group => res.status(200).json(group))
     .catch(err =>{
        throw err
      })
+})
+
+router.get('/groups/user/:id', (req,res,next)=>{
+  const userId = req.params.id
+  Group.find({users:{ $in:[userId]}})
+        .then(groups => res.status(200).json(groups))
+        .catch((err)=>{
+          throw err
+        })
+})
+
+router.get('/get/group/:id', (req, res, next)=>{
+  const groupId = req.params.id
+  Group.findOne({"_id" : groupId})
+        .then(group => res.status(200).json(group))
+        .catch(err => {
+          throw err
+        })
 })
 
 

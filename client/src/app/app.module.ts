@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { Routes } from "@angular/router";
 import { RouterModule } from '@angular/router';
 import {routes} from './routes';
+import { GroupService } from './services/group.service'
 
 import { MultiformComponent } from './multiform/multiform.component';
 import { PickPlatComponent } from './pick-plat/pick-plat.component';
@@ -28,6 +29,7 @@ import {MatTabsModule} from '@angular/material';
 import { GroupsPageComponent } from './groups-page/groups-page.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { SingleGroupComponent } from './single-group/single-group.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     GamePageComponent,
     GroupsPageComponent,
     GroupFormComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SingleGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
               AuthService,
               IsLoggedInService,
               AddGameService,
-              EditUserService],
+              EditUserService,
+              GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

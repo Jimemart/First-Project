@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AddGameService } from '../services/add-game.service'
 import { AuthService } from '../services/auth.service'
 
@@ -8,6 +8,8 @@ import { AuthService } from '../services/auth.service'
   styleUrls: ['./group-form.component.css']
 })
 export class GroupFormComponent implements OnInit {
+@Output() onSave = new EventEmitter<boolean>();
+
   loggedUser = this.auth.user
   foundGames:Array<object> = []
   groupInfo = {
@@ -15,6 +17,7 @@ export class GroupFormComponent implements OnInit {
   platform:"",
   groupImage: "",
   gameId:0,
+  gameName:"",
   users: []
 }
   searchBar:string
@@ -39,17 +42,21 @@ export class GroupFormComponent implements OnInit {
     const id = elem.getAttribute('data-value')
     this.add.findGame(id)
         .subscribe(game =>{
+          console.log(game)
           this.add.bigScreenshot(game[0].screenshots)
           this.groupInfo.groupImage = game[0].screenshots[1].url
           this.groupInfo.gameId = game[0].id
+          this.groupInfo.gameName = game[0].slug
           this.groupInfo.users.push(this.loggedUser['_id'])
-          console.log(this.groupInfo)
         })
   }
 
   createGroup(){
+    console.log("emitiendo")
     this.add.createGroup(this.groupInfo)
-            .subscribe()
+            .subscribe(group =>{
+                this.onSave.emit(false)
+            })
   }
 
 

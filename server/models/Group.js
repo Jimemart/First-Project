@@ -6,6 +6,7 @@ const groupSchema = new Schema({
   platform:String,
   groupImage:String,
   gameId:Number,
+  gameName:String,
   users:[Schema.Types.ObjectId]
 
 })

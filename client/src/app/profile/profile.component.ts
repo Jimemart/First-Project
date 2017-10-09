@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service'
 import { AddGameService } from '../services/add-game.service'
 import { ActivatedRoute } from '@angular/router'
 import{ EditUserService } from '../services/edit-user.service'
+import{ GroupService } from '../services/group.service'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -12,6 +13,7 @@ export class ProfileComponent implements OnInit {
   LoggedUser:any
   profileUser:object
   notfollow:boolean = true
+  userGroups:number
 
   userGames:Array<Object>=[]
   profileId:any
@@ -19,7 +21,8 @@ export class ProfileComponent implements OnInit {
   constructor(private auth:AuthService,
               private add:AddGameService,
               private route: ActivatedRoute,
-              private edit: EditUserService) { }
+              private edit: EditUserService,
+              private groupService: GroupService) { }
 
   ngOnInit() {
     this.route.params
@@ -30,6 +33,11 @@ export class ProfileComponent implements OnInit {
     this.getProfileUser(this.profileId)
     this.checkIfMyProfile(this.auth.user['_id'])
     this.checkIfFollow()
+    this.route.params
+        .subscribe((params)=> {
+          this.profileId = params['id']
+          this.getUserGroups(this.profileId)
+        })
     // this.getGames(this.profileUser['games'])
   }
 
@@ -37,7 +45,6 @@ export class ProfileComponent implements OnInit {
     this.add.searchProfile(id)
             .subscribe(user =>{
               this.profileUser = user
-              console.log(this.profileUser)
               this.getGames(this.profileUser['games'])
             })
   }
@@ -50,7 +57,6 @@ export class ProfileComponent implements OnInit {
                 this.add.bigScreenshot(game[0].screenshots)
                 this.userGames.push(game)
               })
-              console.log('hola',this.userGames)
     })
 }
 checkIfMyProfile(userId){
@@ -63,7 +69,6 @@ checkIfFollow(){
     if(friend == this.profileId){
       this.notfollow = false
     }
-    console.log(this.notfollow)
   })
 }
 
@@ -74,4 +79,12 @@ followUser(){
             .subscribe()
 }
 
+
+getUserGroups(id){
+  this.groupService.getUserGroups(id)
+      .subscribe(groups =>{
+        this.userGroups = groups.length
+        console.log(this.userGroups)
+      })
+}
 }

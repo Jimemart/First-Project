@@ -42,8 +42,8 @@
   </div>
   <div class="num">
 
-    <h2 *ngIf="profileUser.groups">{{profileUser.groups.length}}</h2>
-    <h2 *ngIf="!profileUser.groups">0</h2>
+    <h2 *ngIf="userGroups">{{userGroups}}</h2>
+    <h2 *ngIf="!userGroups">0</h2>
     <a [routerLink] = "['/groups', profileUser._id]" class="toGroups">
     <h4>GROUPS</h4>
   </a>

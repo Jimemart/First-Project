@@ -19,6 +19,7 @@ router.get('/findone/:id', (req,res,next)=>{
     'popularity',
     'release_dates.platform',
     'summary',
+    'slug',
     'screenshots',
   ]).then(response1 =>{
     return res.status(200).json(response1.body)
@@ -44,7 +45,8 @@ router.get('/search/:game', (req,res, next)=>{
     order: 'popularity:desc',
   },[
     'name',
-    'cover'
+    'cover',
+    'slug'
   ]).then((response)=>{
     return res.status(200).json(response)
   }).catch(err =>{
