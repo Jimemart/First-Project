@@ -48,7 +48,8 @@ export class GroupFormComponent implements OnInit {
   }
 
   createGroup(){
-    console.log(this.loggedUser)
+    this.add.createGroup(this.groupInfo)
+            .subscribe()
   }
 
 
