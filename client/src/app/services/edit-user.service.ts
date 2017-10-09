@@ -5,20 +5,22 @@ import 'rxjs';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router'
 
+const BASE_URL = environment.BASE_URL
+
 @Injectable()
 export class EditUserService {
-  BASE_URL: string = 'http://localhost:3000';
+  
 
   constructor(private http:Http, private router:Router) { }
 
   addGame(userId, games){
-    return this.http.post(`${this.BASE_URL}/api/hola`, {games, userId})
+    return this.http.post(`${BASE_URL}/api/hola`, {games, userId})
             .map(res => res.json())
             .catch(err =>{ throw err})
   }
 
   addUser(myId, updates){
-    return this.http.post(`${this.BASE_URL}/api/follow/user`, {myId, updates})
+    return this.http.post(`${BASE_URL}/api/follow/user`, {myId, updates})
             .map(res => res.json())
             .catch(err =>{ throw err})
   }

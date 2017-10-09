@@ -5,35 +5,35 @@ import 'rxjs';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router'
 
-
+const BASE_URL = environment.BASE_URL
 @Injectable()
 export class AddGameService {
   gamesToAdd = []
-  BASE_URL: string = 'http://localhost:3000';
+
   constructor(public http:Http, public route: Router) { }
 
   findGame(game){
-    return this.http.get(`${this.BASE_URL}/api/findone/${game}`)
+    return this.http.get(`${BASE_URL}/api/findone/${game}`)
             .map((res)=>res.json())
   }
 
   findInDb(gameId){
-    return this.http.get(`${this.BASE_URL}/api/find/db/${gameId}`)
+    return this.http.get(`${BASE_URL}/api/find/db/${gameId}`)
             .map((res)=>res.json())
   }
 
   saveGame(game){
-    return this.http.post(`${this.BASE_URL}/api/save/game`, {game})
+    return this.http.post(`${BASE_URL}/api/save/game`, {game})
             .map((res)=> res.json())
   }
 
   searchGame(game){
-    return this.http.get(`${this.BASE_URL}/api/search/${game}`)
+    return this.http.get(`${BASE_URL}/api/search/${game}`)
               .map((res)=> res.json())
   }
 
   searchUser(gameId){
-    return this.http.get(`${this.BASE_URL}/api/user/${gameId}`)
+    return this.http.get(`${BASE_URL}/api/user/${gameId}`)
               .map((res)=>res.json())
   }
 
@@ -56,7 +56,7 @@ export class AddGameService {
   }
   searchProfile(id){
     console.log('the id',id)
-    return this.http.get(`${this.BASE_URL}/api/user/profile/${id}`)
+    return this.http.get(`${BASE_URL}/api/user/profile/${id}`)
               .map((res)=>res.json())
   }
 

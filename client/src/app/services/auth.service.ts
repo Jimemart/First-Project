@@ -4,10 +4,11 @@ import {Http} from '@angular/http';
 import 'rxjs';
 import {environment} from '../../environments/environment';
 
+const BASE_URL = environment.BASE_URL
 
 @Injectable()
 export class AuthService {
-  BASE_URL: string = 'http://localhost:3000';
+
   gamesList:Array<string>
   platList: Array<string>
   secondStep:Boolean
@@ -44,28 +45,28 @@ export class AuthService {
 
     signup(username,password,email,games,platforms) {
 
-      return this.http.post(`${this.BASE_URL}/api/signup`, {username,password,email, games, platforms}, this.options)
+      return this.http.post(`${BASE_URL}/api/signup`, {username,password,email, games, platforms}, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
     }
 
     login(username,password) {
-      return this.http.post(`${this.BASE_URL}/api/login`, {username,password}, this.options)
+      return this.http.post(`${BASE_URL}/api/login`, {username,password}, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
     }
 
     logout() {
-      return this.http.get(`${this.BASE_URL}/api/logout`, this.options)
+      return this.http.get(`${BASE_URL}/api/logout`, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(null))
         .catch(this.handleError);
     }
 
     isLoggedIn() {
-      return this.http.get(`${this.BASE_URL}/api/loggedin`, this.options)
+      return this.http.get(`${BASE_URL}/api/loggedin`, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
