@@ -7,8 +7,9 @@ const groupSchema = new Schema({
   groupImage:String,
   gameId:Number,
   gameName:String,
+  gameSlug:String,
+  groupName:String,
   users:[Schema.Types.ObjectId]
-
 })
 
 const Group = mongoose.model('Group', groupSchema)

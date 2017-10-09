@@ -37,7 +37,7 @@ router.get('/user/profile/:id', (req,res,next)=>{
 router.post('/follow/user', (req,res,next)=>{
   const userId = req.body.myId
   const updates = {friends : req.body.updates}
-  console.log('en DB', updates)
+
   User.findByIdAndUpdate(userId, updates, {new : true})
         .then(user => res.status(200).json(user))
         .catch((err)=> {throw err});
@@ -45,11 +45,13 @@ router.post('/follow/user', (req,res,next)=>{
 })
 
 router.post('/new/group', (req,res,next)=>{
+  console.log(req.body.groupInfo)
   const newGroup = new Group({
     groupname: req.body.groupInfo.groupname,
     platform: req.body.groupInfo.platform,
     groupImage: req.body.groupInfo.groupImage,
     gameId : req.body.groupInfo.gameId,
+    gameSlug: req.body.groupInfo.gameSlug,
     gameName: req.body.groupInfo.gameName,
     users:req.body.groupInfo.users
   }).save()
@@ -77,5 +79,12 @@ router.get('/get/group/:id', (req, res, next)=>{
         })
 })
 
+router.post('/group/add/user', (req,res,next)=>{
+  const updates = {users: req.body.updates}
+  const groupId = req.body.id
+  Group.findByIdAndUpdate(groupId, updates, {new : true})
+          .then(user => res.status(200).json(user))
+          .catch((err)=> {throw err});
+})
 
 module.exports = router;

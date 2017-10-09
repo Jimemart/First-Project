@@ -54,6 +54,7 @@ setCurrent(elem, other){
     elem.classList.add('current')
     other.classList.remove('current')
     this.corresponds = !this.corresponds
+
 }
 checkPlatforms(game){
 

@@ -17,6 +17,7 @@ export class GroupFormComponent implements OnInit {
   platform:"",
   groupImage: "",
   gameId:0,
+  gameSlug:"",
   gameName:"",
   users: []
 }
@@ -46,7 +47,8 @@ export class GroupFormComponent implements OnInit {
           this.add.bigScreenshot(game[0].screenshots)
           this.groupInfo.groupImage = game[0].screenshots[1].url
           this.groupInfo.gameId = game[0].id
-          this.groupInfo.gameName = game[0].slug
+          this.groupInfo.gameSlug= game[0].slug,
+          this.groupInfo.gameName = game[0].name,
           this.groupInfo.users.push(this.loggedUser['_id'])
         })
   }

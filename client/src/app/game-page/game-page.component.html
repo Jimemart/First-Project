@@ -40,6 +40,10 @@
   </div>
 </div>
 
+<div *ngIf="!corresponds" class="each">
+  <h5 class="heee">hola</h5>
+</div>
+
 <div class="set" *ngIf="showButton && buttonNotClicked">
 <button  *ngIf="game[0]" class="addGame" (click)="addGameToUser(game[0].id)">Add {{game[0].name}} to my games</button>
 </div>

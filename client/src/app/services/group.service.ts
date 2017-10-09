@@ -21,4 +21,9 @@ export class GroupService {
     return this.http.get(`${BASE_URL}/api/get/group/${id}`)
               .map(res => res.json())
   }
+
+  addUser(updates, id){
+    return this.http.post(`${BASE_URL}/api/group/add/user`, {updates, id})
+              .map(res => res.json())
+  }
 }

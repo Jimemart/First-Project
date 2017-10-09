@@ -1,3 +1,43 @@
-<p class="he">
-  single-group works!
-</p>
+<div *ngIf="groupInf" class="group-content">
+  <img [src]="groupInf.groupImage" height="203">
+  <div class="resumen">
+    <div class="nombre">
+      <h5>{{groupInf.groupname}}</h5>
+      <p><span>{{groupInf.gameName}}</span> / <span>{{groupInf.platform}}</span></p>
+    </div>
+    <div class="users">
+      <h5>{{groupInf.users.length}}</h5>
+      <h6>USERS</h6>
+    </div>
+  </div>
+  <div class="usuarios">
+    <div *ngFor="let u of groupUsers" >
+    <a [routerLink]="['/profile', u._id]">
+      <img class="avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
+      <span class="usuarios">{{u.username}}</span>
+    </a>
+    </div>
+  </div>
+</div>
+<div class="set" *ngIf="!isUserInGroup">
+<button  *ngIf="usersInGroup" class="addGame" (click)="userJoinsGroup()">Join Group</button>
+</div>
+<div class="menu">
+<div class="icons" >
+  <a [routerLink] ="['/home']">
+  <i class="material-icons nav-bar">home</i>
+</a>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">explore</i>
+</div>
+<div class="icons">
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+</div>
+<div class="icons">
+  <a [routerLink]="['/profile', loggedUser._id]">
+  <i class="material-icons nav-bar">perm_identity</i>
+</a>
+</div>
+
+</div>
