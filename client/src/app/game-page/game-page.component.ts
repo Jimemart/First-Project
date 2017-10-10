@@ -114,6 +114,7 @@ getGroupsOfGame(id){
 }
 createObjforAct(){
   const newObj = {
+    addedUser: this.game[0]._id,
     text:this.game[0].name,
     owner:this.loggedUser['_id'],
     image: this.game[0].cover.url,

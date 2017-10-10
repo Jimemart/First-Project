@@ -1,3 +1,27 @@
-<p>
-  activity works!
-</p>
+<div class="content">
+  <div *ngFor="let act of userActivities">
+    <div *ngIf="act.kind === 'GAME'">
+      <h6 class="first">Started playing</h6>
+      <div class="game-notification">
+        <img [src] = "act.image" height="70">
+        <p class="titulo">{{act.text}}</p>
+      </div>
+    </div>
+    <div *ngIf="act.kind === 'GROUP'">
+      <h6 class="first">Joined</h6>
+      <div class="game-notification group">
+        <img [src]="act.image" height="70" width="90">
+        <p class="titulo center">{{act.text}}</p>
+        <a [routerLink]="['/group', act.addedUser]" class="group-link">See group > </a>
+      </div>
+    </div>
+    <div *ngIf="act.kind === 'FRIEND'">
+      <h6 class="first">Started following</h6>
+      <div class="game-notification small">
+        <img [src] ="act.image" height="40" class="avatar">
+        <p class="titulo center">{{act.text}}</p>
+        <a [routerLink]="['/profile', act.addedUser]">See profile > </a>
+      </div>
+    </div>
+  </div>
+</div>

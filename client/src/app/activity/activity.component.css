@@ -1,0 +1,72 @@
+.content{
+  position: relative;
+  top:85px;
+  color:white;
+  margin-left:40px;
+}
+.first{
+  font-size: 12px;
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: lighter;
+  margin-bottom: 8px;
+  margin-top:0;
+}
+.game-notification{
+  display: inline-block;
+  width: 182px;
+  background: rgba(66, 66, 66, 0.32);
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+.game-notification img{
+  display: inline-block;
+  margin: 8px;
+}
+.titulo{
+  margin: 17px 8px 0px 0;
+  vertical-align: top;
+  font-family: 'Titillium Web', sans-serif;
+  font-size:12px;
+  display: inline-block;
+  width: 70px;
+}
+.avatar{
+  border-radius:50%;
+  display: inline-block;
+  margin: 8px;
+}
+.center{
+  text-align: center;
+  margin-top: 11px;
+}
+.game-notification a {
+  display: inline-block;
+  position: relative;
+  bottom: 30px;
+  left: 40%;
+  margin: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 10px;
+  color: #fd2249;
+  font-weight: bold;
+
+}
+.game-notification .group-link{
+  display: inline-block;
+  position: relative;
+  bottom: 60px;
+  left: 60%;
+  margin: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 10px;
+  color: #fd2249;
+  font-weight: bold;
+}
+.group{
+  width:200px;
+  height: 90px;
+}
+.small{
+  height: 56px;
+}

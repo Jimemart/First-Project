@@ -71,18 +71,22 @@
 <nav>
   <ul>
       <li class="current game-comp" #games data-value="1">Games</li>
-      <li class="game-comp" #activity data-value="2">Activity</li>
+      <li class="game-comp" #activity data-value="2" (click)='changeContent(activity)'>Activity</li>
       <li class="game-comp" #posts  data-value="3">Posts</li>
   </ul>
 </nav>
-<div class="usergames">
+<div class="content">
+<div class="usergames" *ngIf="contenido === 'games'">
   <div *ngFor="let game of userGames" class="game-inf">
     <a [routerLink] = '["/game", game[0].id]'>
     <img [src] = "game[0].screenshots[0].url" height="93" width="156">
       </a>
     <h5>{{game[0].name}}</h5>
-
   </div>
+</div>
+<div *ngIf="contenido === 'activity'">
+  <app-activity></app-activity>
+</div>
 </div>
 </div>
 <div class="menu">

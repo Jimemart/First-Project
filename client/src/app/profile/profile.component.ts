@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   profileUser:object
   notfollow:boolean = true
   userGroups:number
-
+  contenido:string = 'games'
   userGames:Array<Object>=[]
   profileId:any
   myProfile:boolean = false;
@@ -104,5 +104,9 @@ createObjforAct(){
   }
   return newObj
 }
-
+changeContent(elem){
+  const value = elem.innerHTML
+  this.contenido = value.toLowerCase()
+  console.log(this.contenido)
+}
 }
