@@ -3,6 +3,7 @@ import { GroupService } from '../services/group.service'
 import { AddGameService } from '../services/add-game.service'
 import { ActivatedRoute } from '@angular/router'
 import { AuthService } from '../services/auth.service'
+import { ActivityService } from '../services/activity.service'
 
 @Component({
   selector: 'app-single-group',
@@ -14,7 +15,8 @@ export class SingleGroupComponent implements OnInit {
   constructor(private group:GroupService,
               private route:ActivatedRoute,
               private add:AddGameService,
-              private auth:AuthService
+              private auth:AuthService,
+              private act:ActivityService
               ) { }
 
   groupId:string
@@ -40,6 +42,7 @@ export class SingleGroupComponent implements OnInit {
         .subscribe(group =>{
           this.groupInf = group
           this.usersInGroup = this.groupInf['users']
+          console.log(this.groupInf)
           this.groupUsers = []
           this.usersInGroup.forEach(user =>{
              this.add.searchProfile(user)
@@ -62,10 +65,22 @@ export class SingleGroupComponent implements OnInit {
 
   userJoinsGroup(){
     this.usersInGroup.push(this.loggedUser['_id'])
-    console.log(this.usersInGroup)
     this.group.addUser(this.usersInGroup, this.groupId)
           .subscribe(user =>{
             this.getGroupInfo(this.groupId)
+            this.act.addNewAct(this.createObjforAct())
+                    .subscribe()
           })
+  }
+
+  createObjforAct(){
+    const newObj = {
+      text:this.groupInf['groupname'],
+      owner:this.loggedUser['_id'],
+      image: this.groupInf['groupImage'],
+      addedUser: this.groupInf['_id'],
+      kind: 'GROUP'
+    }
+    return newObj
   }
 }

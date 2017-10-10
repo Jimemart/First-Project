@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service'
 import { EditUserService } from '../services/edit-user.service'
 import { GroupService } from '../services/group.service'
+import { ActivityService} from '../services/activity.service'
 
 @Component({
   selector: 'app-game-page',
@@ -26,7 +27,8 @@ export class GamePageComponent implements OnInit {
               public route:ActivatedRoute,
               public auth:AuthService,
               public edit: EditUserService,
-              public group: GroupService) { }
+              public group: GroupService,
+              public act: ActivityService) { }
 
   ngOnInit() {
     this.loggedUser = this.auth.user
@@ -46,6 +48,7 @@ getMainGame(id){
         this.add.bigScreenshot(game[0].screenshots)
         this.game = game
         this.checkPlatforms(this.game)
+
       })
 }
 getUsers(id){
@@ -96,7 +99,11 @@ addGameToUser(gameId){
   totalGames.push(gameId.toString())
   this.buttonNotClicked = false;
   this.edit.addGame(this.loggedUser['_id'], totalGames)
-          .subscribe(user => this.getUsers(this.gameId))
+          .subscribe(user => {
+            this.getUsers(this.gameId)
+            this.act.addNewAct(this.createObjforAct())
+                    .subscribe()
+          })
 }
 getGroupsOfGame(id){
   this.group.getGroupsOfSameGame(id)
@@ -104,5 +111,14 @@ getGroupsOfGame(id){
               this.groupsOfGame = groups
               console.log(this.groupsOfGame)
             })
+}
+createObjforAct(){
+  const newObj = {
+    text:this.game[0].name,
+    owner:this.loggedUser['_id'],
+    image: this.game[0].cover.url,
+    kind: 'GAME'
+  }
+  return newObj
 }
 }

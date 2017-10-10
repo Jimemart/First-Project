@@ -44,5 +44,6 @@ export class GroupsPageComponent implements OnInit {
           this.getUserGroups(this.profileId)
         })
   }
+  
 
 }

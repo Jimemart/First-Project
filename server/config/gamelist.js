@@ -1,6 +1,6 @@
 const igdb = require('igdb-api-node').default;
 
-global['3scaleKey'] = 'd954ff37e0384de2413508acc74eb559';
+global['3scaleKey'] = '5748115f6c9f196a1fb62692da9c36cd';
 
 const client = igdb()
 

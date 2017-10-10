@@ -7,7 +7,7 @@ const userSchema = new Schema({
   email : String,
   platforms : [String],
   games : [String],
-  friends: [Schema.Types.ObjectId]
+  friends: [{type:Schema.Types.ObjectId, ref:'User'}]
 },{
   timestamps : {
     createdAt: 'created_at',

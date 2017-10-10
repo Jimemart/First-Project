@@ -3,6 +3,7 @@ const router = express.Router()
 const Game = require('../models/Game')
 const User = require('../models/User')
 const Group = require('../models/Group')
+const Act = require('../models/Activity')
 
 router.post('/hola', (req,res,next)=>{
   const updates = {games : req.body.games}
@@ -45,7 +46,7 @@ router.post('/follow/user', (req,res,next)=>{
 })
 
 router.post('/new/group', (req,res,next)=>{
-  console.log(req.body.groupInfo)
+
   const newGroup = new Group({
     groupname: req.body.groupInfo.groupname,
     platform: req.body.groupInfo.platform,
@@ -59,6 +60,20 @@ router.post('/new/group', (req,res,next)=>{
     .catch(err =>{
        throw err
      })
+})
+
+router.post('/add/activity', (req,res,next)=>{
+  const newActivity = new Act({
+    text: req.body.newAct.text,
+    owner : req.body.newAct.owner,
+    image: req.body.newAct.image,
+    addedUser: req.body.newAct.addedUser,
+    kind: req.body.newAct.kind
+  }).save()
+    .then(act => res.status(200).json(act))
+    .catch(err =>{
+      throw err
+    })
 })
 
 router.get('/groups/user/:id', (req,res,next)=>{
@@ -95,6 +110,15 @@ router.get('/common/groups/:id', (req, res, next)=>{
         .catch(err =>{
           throw err
         })
+})
+
+router.get('/user/activity/:id', (req,res,next)=>{
+  const userId = req.params.id
+  Act.find({'owner' : userId}).sort({'created_at': -1})
+      .then((acts)=> res.status(200).json(acts))
+      .catch(err =>{
+        throw err
+      })
 })
 
 module.exports = router;

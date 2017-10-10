@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AddGameService } from '../services/add-game.service'
 import { AuthService } from '../services/auth.service'
-
+import { ActivityService } from '../services/activity.service'
 @Component({
   selector: 'app-group-form',
   templateUrl: './group-form.component.html',
@@ -23,7 +23,8 @@ export class GroupFormComponent implements OnInit {
 }
   searchBar:string
   constructor(private add:AddGameService,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private act: ActivityService) { }
 
   ngOnInit() {
   }
@@ -43,7 +44,6 @@ export class GroupFormComponent implements OnInit {
     const id = elem.getAttribute('data-value')
     this.add.findGame(id)
         .subscribe(game =>{
-          console.log(game)
           this.add.bigScreenshot(game[0].screenshots)
           this.groupInfo.groupImage = game[0].screenshots[1].url
           this.groupInfo.gameId = game[0].id
@@ -54,12 +54,23 @@ export class GroupFormComponent implements OnInit {
   }
 
   createGroup(){
-    console.log("emitiendo")
+
     this.add.createGroup(this.groupInfo)
             .subscribe(group =>{
                 this.onSave.emit(false)
+                this.act.addNewAct(this.createObjforAct(group))
+                        .subscribe()
             })
   }
-
+  createObjforAct(group){
+    const newObj = {
+      text:group['groupname'],
+      owner:this.loggedUser['_id'],
+      image: group['groupImage'],
+      addedUser: group['_id'],
+      kind: 'GROUP'
+    }
+    return newObj
+  }
 
 }

@@ -4,6 +4,9 @@ import { AddGameService } from '../services/add-game.service'
 import { ActivatedRoute } from '@angular/router'
 import{ EditUserService } from '../services/edit-user.service'
 import{ GroupService } from '../services/group.service'
+import{ ActivityService } from '../services/activity.service'
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -22,7 +25,8 @@ export class ProfileComponent implements OnInit {
               private add:AddGameService,
               private route: ActivatedRoute,
               private edit: EditUserService,
-              private groupService: GroupService) { }
+              private groupService: GroupService,
+              private act:ActivityService) { }
 
   ngOnInit() {
     this.route.params
@@ -74,9 +78,12 @@ checkIfFollow(){
 
 followUser(){
   this.notfollow = false
-   this.LoggedUser.friends.push( this.profileId)
+   this.LoggedUser.friends.push(this.profileId)
    this.edit.addUser( this.LoggedUser._id, this.LoggedUser.friends)
-            .subscribe()
+            .subscribe(user =>{
+              this.act.addNewAct(this.createObjforAct())
+                    .subscribe()
+            })
 }
 
 
@@ -84,7 +91,18 @@ getUserGroups(id){
   this.groupService.getUserGroups(id)
       .subscribe(groups =>{
         this.userGroups = groups.length
-        console.log(this.userGroups)
       })
 }
+
+createObjforAct(){
+  const newObj = {
+    text:this.profileUser['username'],
+    owner:this.LoggedUser['_id'],
+    image: 'https://avatarfiles.alphacoders.com/812/81222.jpg',
+    addedUser:this.profileUser['_id'],
+    kind: 'FRIEND'
+  }
+  return newObj
+}
+
 }

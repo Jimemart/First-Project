@@ -13,6 +13,7 @@ import { Routes } from "@angular/router";
 import { RouterModule } from '@angular/router';
 import {routes} from './routes';
 import { GroupService } from './services/group.service'
+import { ActivityService } from './services/activity.service'
 
 import { MultiformComponent } from './multiform/multiform.component';
 import { PickPlatComponent } from './pick-plat/pick-plat.component';
@@ -30,6 +31,7 @@ import { GroupsPageComponent } from './groups-page/groups-page.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SingleGroupComponent } from './single-group/single-group.component';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { SingleGroupComponent } from './single-group/single-group.component';
     GroupsPageComponent,
     GroupFormComponent,
     WelcomeComponent,
-    SingleGroupComponent
+    SingleGroupComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { SingleGroupComponent } from './single-group/single-group.component';
               IsLoggedInService,
               AddGameService,
               EditUserService,
-              GroupService],
+              GroupService,
+              ActivityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
