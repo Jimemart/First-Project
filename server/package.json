@@ -19,6 +19,7 @@
     "express-ejs-layouts": "~2.2.0",
     "express-session": "^1.15.6",
     "igdb-api-node": "^3.0.2",
+    "moment": "^2.19.0",
     "mongoose": "~4.8.5",
     "morgan": "~1.7.0",
     "nodemon": "^1.12.1",

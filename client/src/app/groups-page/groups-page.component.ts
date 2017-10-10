@@ -16,12 +16,16 @@ export class GroupsPageComponent implements OnInit {
   constructor(private groupService: GroupService, private route:ActivatedRoute, private auth:AuthService) { }
 
   ngOnInit() {
-    this.loggedUser = this.auth.user
-    this.route.params
-        .subscribe((params)=> {
-          this.profileId = params['id']
-          this.getUserGroups(this.profileId)
-        })
+    this.auth.isLoggedIn()
+        .subscribe(user =>{
+          this.loggedUser = this.auth.user
+          this.route.params
+              .subscribe((params)=> {
+                this.profileId = params['id']
+                this.getUserGroups(this.profileId)
+              })
+
+  })
 
   }
 
@@ -44,6 +48,6 @@ export class GroupsPageComponent implements OnInit {
           this.getUserGroups(this.profileId)
         })
   }
-  
+
 
 }

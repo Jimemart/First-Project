@@ -33,6 +33,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SingleGroupComponent } from './single-group/single-group.component';
 import { ActivityComponent } from './activity/activity.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,6 @@ import { ActivityComponent } from './activity/activity.component';
     MdCheckboxModule,
     MatButtonModule,
     MatTabsModule,
-
     RouterModule.forRoot(routes)
   ],
   providers: [GetListService,

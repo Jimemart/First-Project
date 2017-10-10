@@ -1,6 +1,8 @@
 <div class="content">
   <div *ngFor="let act of userActivities">
+  <h3 class="date"> {{act.since}}</h3>
     <div *ngIf="act.kind === 'GAME'">
+
       <h6 class="first">Started playing</h6>
       <div class="game-notification">
         <img [src] = "act.image" height="70">

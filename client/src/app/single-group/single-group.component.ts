@@ -28,12 +28,16 @@ export class SingleGroupComponent implements OnInit {
   isUserInGroup:boolean = false
 
   ngOnInit() {
-    this.route.params
-        .subscribe((params)=> {
-          this.groupId = params['id']
-          this.getGroupInfo(this.groupId)
+    this.auth.isLoggedIn()
+        .subscribe(user =>{
+          this.route.params
+              .subscribe((params)=> {
+                this.groupId = params['id']
+                this.getGroupInfo(this.groupId)
 
+              })
         })
+
 
   }
 

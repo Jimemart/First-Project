@@ -6,6 +6,7 @@ const ActSchema = new Schema({
   owner: Schema.Types.ObjectId,
   image: String,
   addedUser: Schema.Types.ObjectId,
+  since:String,
   kind : {
     type: String,
     enum : ['FRIEND', 'GAME', 'GROUP'],

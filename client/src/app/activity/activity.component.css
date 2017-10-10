@@ -2,12 +2,14 @@
   position: relative;
   top:85px;
   color:white;
-  margin-left:40px;
+  margin-left:20px;
+  padding-left:20px;
+  border-left: 2px solid #690EAC;
 }
 .first{
   font-size: 12px;
   color:white;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: lighter;
   margin-bottom: 8px;
   margin-top:0;
@@ -69,4 +71,20 @@
 }
 .small{
   height: 56px;
+}
+.date{
+  color:white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  position: relative;
+  right:30px;
+}
+.date:before{
+  content: 'oo';
+  height: 16px;
+  width: 16px;
+  color: #690EAC;
+  background: #690EAC;
+  border-radius:50%;
 }

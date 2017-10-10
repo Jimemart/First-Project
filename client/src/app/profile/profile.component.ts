@@ -29,19 +29,24 @@ export class ProfileComponent implements OnInit {
               private act:ActivityService) { }
 
   ngOnInit() {
-    this.route.params
-        .subscribe((params)=> {
-          this.profileId = params['id']
-        })
-    this.LoggedUser = this.auth.getUser()
-    this.getProfileUser(this.profileId)
-    this.checkIfMyProfile(this.auth.user['_id'])
-    this.checkIfFollow()
-    this.route.params
-        .subscribe((params)=> {
-          this.profileId = params['id']
-          this.getUserGroups(this.profileId)
-        })
+    this.auth.isLoggedIn()
+          .subscribe(user =>{
+            this.route.params
+                .subscribe((params)=> {
+                  this.profileId = params['id']
+                  this.getUserGroups(this.profileId)
+                })
+            this.LoggedUser = this.auth.getUser()
+            this.getProfileUser(this.profileId)
+            this.checkIfMyProfile(this.auth.user['_id'])
+            this.checkIfFollow()
+          })
+
+    // this.route.params
+    //     .subscribe((params)=> {
+    //       this.profileId = params['id']
+    //       this.getUserGroups(this.profileId)
+    //     })
     // this.getGames(this.profileUser['games'])
   }
 
@@ -91,6 +96,7 @@ getUserGroups(id){
   this.groupService.getUserGroups(id)
       .subscribe(groups =>{
         this.userGroups = groups.length
+        console.log(this.userGroups)
       })
 }
 

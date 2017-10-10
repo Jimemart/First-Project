@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../services/activity.service'
 import { AuthService } from '../services/auth.service'
 import { ActivatedRoute } from '@angular/router'
-
+import { MomentModule } from 'angular2-moment';
 
 @Component({
   selector: 'app-activity',
@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router'
 export class ActivityComponent implements OnInit {
   profileId:string
   userActivities:Array<object>
-
   constructor(private auth:AuthService,
               private act:ActivityService,
               private route:ActivatedRoute) { }

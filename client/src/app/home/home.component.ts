@@ -22,12 +22,14 @@ export class HomeComponent implements OnInit {
               private getList: GetListService) { }
 
   ngOnInit() {
-    this.user = this.auth.user
-    this.myGamesId = this.user.games
-    this.getGames(this.myGamesId)
-    this.getGamesForPlat(this.user.platforms)
-    this.getRelatedGames(this.getRandomId(this.user.games))
-
+    this.auth.isLoggedIn()
+          .subscribe(user =>{
+            this.user = user
+            this.myGamesId = this.user.games
+            this.getGames(this.myGamesId)
+            this.getGamesForPlat(this.user.platforms)
+            this.getRelatedGames(this.getRandomId(this.user.games))
+          })
   }
 
 getRandomId(arr){

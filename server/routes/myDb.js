@@ -4,6 +4,8 @@ const Game = require('../models/Game')
 const User = require('../models/User')
 const Group = require('../models/Group')
 const Act = require('../models/Activity')
+const moment = require('moment')
+moment().format()
 
 router.post('/hola', (req,res,next)=>{
   const updates = {games : req.body.games}
@@ -115,7 +117,13 @@ router.get('/common/groups/:id', (req, res, next)=>{
 router.get('/user/activity/:id', (req,res,next)=>{
   const userId = req.params.id
   Act.find({'owner' : userId}).sort({'created_at': -1})
-      .then((acts)=> res.status(200).json(acts))
+      .then((acts)=> {
+        acts.forEach(act=>{
+          const date = moment(act.created_at, moment.ISO_8601).format('YYYY-MM-DD hh:mm:ss a')
+          act.since = moment(date).fromNow()
+        })
+
+        res.status(200).json(acts)})
       .catch(err =>{
         throw err
       })

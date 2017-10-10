@@ -9,31 +9,31 @@ const BASE_URL = environment.BASE_URL
 @Injectable()
 export class AddGameService {
   gamesToAdd = []
-
+  private options = {withCredentials:true};
   constructor(public http:Http, public route: Router) { }
 
   findGame(game){
-    return this.http.get(`${BASE_URL}/api/findone/${game}`)
+    return this.http.get(`${BASE_URL}/api/findone/${game}`, this.options)
             .map((res)=>res.json())
   }
 
   findInDb(gameId){
-    return this.http.get(`${BASE_URL}/api/find/db/${gameId}`)
+    return this.http.get(`${BASE_URL}/api/find/db/${gameId}`, this.options)
             .map((res)=>res.json())
   }
 
   saveGame(game){
-    return this.http.post(`${BASE_URL}/api/save/game`, {game})
+    return this.http.post(`${BASE_URL}/api/save/game`, {game}, this.options)
             .map((res)=> res.json())
   }
 
   searchGame(game){
-    return this.http.get(`${BASE_URL}/api/search/${game}`)
+    return this.http.get(`${BASE_URL}/api/search/${game}`, this.options)
               .map((res)=> res.json())
   }
 
   searchUser(gameId){
-    return this.http.get(`${BASE_URL}/api/user/${gameId}`)
+    return this.http.get(`${BASE_URL}/api/user/${gameId}`, this.options)
               .map((res)=>res.json())
   }
 
@@ -56,7 +56,7 @@ export class AddGameService {
   }
 
   searchProfile(id){
-    return this.http.get(`${BASE_URL}/api/user/profile/${id}`)
+    return this.http.get(`${BASE_URL}/api/user/profile/${id}`, this.options)
               .map((res)=>res.json())
   }
 

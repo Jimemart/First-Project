@@ -1,17 +1,18 @@
 require('dotenv').config()
-const express      = require('express');
-const path         = require('path');
-const favicon      = require('serve-favicon');
-const logger       = require('morgan');
+
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const session    = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const logger = require('morgan');
+const passport   = require('passport');
 const cookieParser = require('cookie-parser');
-const passport = require('passport')
-const session = require('express-session')
-const bodyParser   = require('body-parser');
-const layouts      = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 const debug = require('debug')("angularauth:"+path.basename(__filename).split('.')[0]);
-const mongoose     = require('mongoose');
-const MongoStore = require('connect-mongo')(session)
-const cors = require('cors')
+const authRoutes = require('./routes/auth');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 
 
@@ -48,7 +49,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(layouts);
+// app.use(layouts);
 
 app.use(session({
   secret: 'angular auth passport secret shh',
@@ -57,6 +58,7 @@ app.use(session({
   cookie : { httpOnly: true, maxAge: 60*60*24*365 },
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
 require('./passport/serializers');
 require('./passport/local');
 
@@ -66,7 +68,6 @@ app.use(passport.session());
 const checkDb = require('./routes/myDb')
 const singleGame = require('./routes/findGames')
 const gamesRoutes = require('./routes/prueba')
-const authRoutes = require('./routes/auth');
 app.use('/api', authRoutes);
 app.use('/api', gamesRoutes)
 app.use('/api', singleGame)
