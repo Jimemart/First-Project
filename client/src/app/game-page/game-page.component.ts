@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service'
 import { EditUserService } from '../services/edit-user.service'
+import { GroupService } from '../services/group.service'
 
 @Component({
   selector: 'app-game-page',
@@ -13,16 +14,19 @@ import { EditUserService } from '../services/edit-user.service'
 export class GamePageComponent implements OnInit {
   game:Array<any> = []
   users:Array<any> = []
+  groupsOfGame:Array<object> = []
   gameId:number
   corresponds:boolean= true
   platformsGame:string = ''
   showButton:boolean = true
   loggedUser:Object
   buttonNotClicked:boolean = true
+
   constructor(public add: AddGameService,
               public route:ActivatedRoute,
               public auth:AuthService,
-              public edit: EditUserService) { }
+              public edit: EditUserService,
+              public group: GroupService) { }
 
   ngOnInit() {
     this.loggedUser = this.auth.user
@@ -31,6 +35,7 @@ export class GamePageComponent implements OnInit {
     this.getMainGame(this.gameId)
     this.getUsers(this.gameId)
     this.checkIfUserHasThisGame(this.gameId)
+    this.getGroupsOfGame(this.gameId)
 
   }
 
@@ -93,6 +98,11 @@ addGameToUser(gameId){
   this.edit.addGame(this.loggedUser['_id'], totalGames)
           .subscribe(user => this.getUsers(this.gameId))
 }
-
-
+getGroupsOfGame(id){
+  this.group.getGroupsOfSameGame(id)
+            .subscribe(groups =>{
+              this.groupsOfGame = groups
+              console.log(this.groupsOfGame)
+            })
+}
 }

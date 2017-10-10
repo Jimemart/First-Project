@@ -26,4 +26,9 @@ export class GroupService {
     return this.http.post(`${BASE_URL}/api/group/add/user`, {updates, id})
               .map(res => res.json())
   }
+
+  getGroupsOfSameGame(id){
+    return this.http.get(`${BASE_URL}/api/common/groups/${id}`)
+              .map(res => res.json())
+  }
 }

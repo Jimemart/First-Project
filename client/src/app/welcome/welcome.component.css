@@ -14,6 +14,13 @@
 }
 .top{
   position: relative;
-  top: 407px;
+  top: 260px;
   margin-bottom: 8px;
+}
+
+.logo{
+  position: relative;
+  top:193px;
+  display: block;
+  margin: 0 auto;
 }

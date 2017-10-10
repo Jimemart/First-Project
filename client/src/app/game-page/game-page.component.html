@@ -41,11 +41,16 @@
 </div>
 
 <div *ngIf="!corresponds" class="each">
-  <h5 class="heee">hola</h5>
+  <div  *ngFor="let group of groupsOfGame" class="add" [attr.data-value] ="group._id">
+    <a [routerLink]="['/group', group._id]">
+    <img [src] ="group.groupImage" height="93px" width='156'>
+  </a>
+    <h5>{{group.groupname}}</h5>
+  </div>
 </div>
 
 <div class="set" *ngIf="showButton && buttonNotClicked">
-<button  *ngIf="game[0]" class="addGame" (click)="addGameToUser(game[0].id)">Add {{game[0].name}} to my games</button>
+<button  *ngIf="game[0]" class="addGame" (click)="addGameToUser(game[0].id)">Add {{game[0].name}}</button>
 </div>
 
 <div class="menu">

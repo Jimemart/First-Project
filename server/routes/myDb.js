@@ -87,4 +87,14 @@ router.post('/group/add/user', (req,res,next)=>{
           .catch((err)=> {throw err});
 })
 
+router.get('/common/groups/:id', (req, res, next)=>{
+  const gameId = req.params.id
+
+  Group.find({'gameId' : gameId})
+        .then((games) => res.status(200).json(games))
+        .catch(err =>{
+          throw err
+        })
+})
+
 module.exports = router;
