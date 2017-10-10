@@ -10,6 +10,7 @@ import { GamePageComponent } from './game-page/game-page.component'
 import { GroupsPageComponent } from './groups-page/groups-page.component'
 import { SingleGroupComponent } from './single-group/single-group.component'
 import { WelcomeComponent } from './welcome/welcome.component'
+import { BrowserComponent } from './browser/browser.component'
 
 export const routes:Routes= [
   {path: '',component:WelcomeComponent},
@@ -20,5 +21,6 @@ export const routes:Routes= [
   {path: 'home', component: HomeComponent},
   {path: 'game/:id', component: GamePageComponent},
   {path: 'groups/:id', component: GroupsPageComponent},
-  {path: 'group/:id', component: SingleGroupComponent}
+  {path: 'group/:id', component: SingleGroupComponent},
+  {path: 'browse', component: BrowserComponent}
 ]

@@ -1,0 +1,67 @@
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+  z-index:1
+}
+.searchBar{
+  position: absolute;
+    top: 104px;
+    left: 8px;
+    width: 340px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid grey;
+    color:white;
+}
+.search{
+  position:absolute;
+  top:104px;
+  right:16px;
+  color:grey;
+}
+.inline{
+  display: inline-block;
+  margin: 10px;
+  margin-top:0;
+  vertical-align: top;
+}
+.users-list{
+  position: relative;
+  top: 172px;
+  color:white;
+}
+.position{
+  position: relative;
+}
+h5{
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 12px;
+  font-weight: lighter;
+  margin-top:0px;
+  max-width: 156px;
+  text-align: center;
+
+  margin: 0;
+}
+.usuarios{
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size:16px;
+  font-weight: lighter;
+  vertical-align: 100%;
+}
+.avatar{
+  margin:10px;
+  width: 40px;
+  border-radius:20px;
+}

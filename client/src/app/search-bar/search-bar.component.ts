@@ -27,6 +27,7 @@ export class SearchBarComponent implements OnInit {
               }
               })
               this.foundGames = found.body
+              console.log(this.foundGames)
             })
   }
   selected(elem){

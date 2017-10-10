@@ -27,4 +27,14 @@ export class GetListService {
     return this.http.get(`${BASE_URL}/api/find/game/${id}`, this.options)
             .map((res)=>res.json())
   }
+
+  browseUsers(name){
+    return this.http.get(`${BASE_URL}/api/find/users/name/${name}`, this.options)
+              .map(res => res.json())
+  }
+  
+  browseGroups(name){
+    return this.http.get(`${BASE_URL}/api/find/groups/name/${name}`, this.options)
+              .map(res => res.json())
+  }
 }

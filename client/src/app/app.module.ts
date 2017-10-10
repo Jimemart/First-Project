@@ -32,6 +32,7 @@ import { GroupFormComponent } from './group-form/group-form.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SingleGroupComponent } from './single-group/single-group.component';
 import { ActivityComponent } from './activity/activity.component';
+import { BrowserComponent } from './browser/browser.component';
 
 
 
@@ -51,7 +52,8 @@ import { ActivityComponent } from './activity/activity.component';
     GroupFormComponent,
     WelcomeComponent,
     SingleGroupComponent,
-    ActivityComponent
+    ActivityComponent,
+    BrowserComponent
   ],
   imports: [
     BrowserModule,

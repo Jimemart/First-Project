@@ -129,4 +129,22 @@ router.get('/user/activity/:id', (req,res,next)=>{
       })
 })
 
+router.get('/find/users/name/:name', (req, res, next)=>{
+  const search = new RegExp(req.params.name)
+  User.find({'username' : {$regex : search , $options: 'i' }})
+        .then(users => res.status(200).json(users))
+        .catch(err =>{
+          throw err
+        })
+})
+
+router.get('/find/groups/name/:name', (req, res, next)=>{
+  const search = new RegExp(req.params.name)
+  Group.find({'gameSlug' : {$regex : search , $options: 'i' }})
+        .then(users => res.status(200).json(users))
+        .catch(err =>{
+          throw err
+        })
+})
+
 module.exports = router;

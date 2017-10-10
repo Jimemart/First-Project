@@ -46,7 +46,8 @@ router.get('/search/:game', (req,res, next)=>{
   },[
     'name',
     'cover',
-    'slug'
+    'slug',
+    'screenshots'
   ]).then((response)=>{
     return res.status(200).json(response)
   }).catch(err =>{
