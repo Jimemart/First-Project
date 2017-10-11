@@ -1,0 +1,93 @@
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  letter-spacing: 2px;
+  z-index:1;
+
+}
+
+.avatar{
+  width: 32px;
+  border-radius:20px;
+}
+.back{
+
+}
+.position{
+  position: relative;
+  left: 24px;
+  top:25px;
+}
+.usuarios{
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size:16px;
+  font-weight: lighter;
+  vertical-align: 100%;
+  top:35px;
+  left:25px;
+}
+.write{
+  position: fixed;
+  bottom:4px;
+  display: block;
+  left: 6px;
+}
+.write input {
+  width: 328px;
+  height: 32px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 24px;
+  border: none;
+  background-color: #212121;
+  color:white;
+  padding-left: 16px;
+}
+.send{
+  position: absolute;
+  bottom: 4px;
+  right:10px;
+  color:#616161;
+}
+.conversation{
+  position: absolute;
+  top:90px;
+  width: 100%;
+
+}
+
+.mine{
+  text-align: right;
+
+  margin-left:50px;
+}
+.other{
+  text-align: left;
+
+  margin-left:10px;
+}
+.message{
+  max-width: 288px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:14px;
+}
+.message p{
+  display: inline-block;
+  padding:10px;
+  border-radius: 5px;
+}
+.red{
+  background: #FD2249;
+  color:white;
+}
+.gray{
+  color:black;
+  background: #c2c2c2;
+}

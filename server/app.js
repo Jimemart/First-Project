@@ -68,10 +68,13 @@ app.use(passport.session());
 const checkDb = require('./routes/myDb')
 const singleGame = require('./routes/findGames')
 const gamesRoutes = require('./routes/prueba')
+const chatRoute = require('./routes/chat')
 app.use('/api', authRoutes);
 app.use('/api', gamesRoutes)
 app.use('/api', singleGame)
 app.use('/api', checkDb)
+app.use('/api', chatRoute)
+
 
 app.use((req, res, next) => {
  res.sendfile(__dirname + '/public/index.html');

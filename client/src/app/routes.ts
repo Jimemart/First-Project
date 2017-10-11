@@ -11,6 +11,8 @@ import { GroupsPageComponent } from './groups-page/groups-page.component'
 import { SingleGroupComponent } from './single-group/single-group.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { BrowserComponent } from './browser/browser.component'
+import { ChatComponent } from './chat/chat.component'
+import { ContactListComponent } from './contact-list/contact-list.component'
 
 export const routes:Routes= [
   {path: '',component:WelcomeComponent},
@@ -22,5 +24,7 @@ export const routes:Routes= [
   {path: 'game/:id', component: GamePageComponent},
   {path: 'groups/:id', component: GroupsPageComponent},
   {path: 'group/:id', component: SingleGroupComponent},
-  {path: 'browse', component: BrowserComponent}
+  {path: 'browse', component: BrowserComponent},
+  {path: 'chat/:room/:id', component:ChatComponent},
+  {path: 'contact', component: ContactListComponent}
 ]

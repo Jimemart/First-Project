@@ -1,0 +1,11 @@
+<div class="header">
+  <h3> Chat </h3>
+</div>
+<div class="contenedor">
+<div *ngIf = "contacts" class="each" >
+  <div *ngFor="let u of contacts" (click)="navigateToRoom(u.username, u._id)">
+    <img class="avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
+    <span class="usuarios">{{u.username}}</span>
+  </div>
+</div>
+</div>

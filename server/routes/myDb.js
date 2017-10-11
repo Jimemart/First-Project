@@ -30,6 +30,7 @@ router.get('/user/:gameId', (req,res,next)=>{
 router.get('/user/profile/:id', (req,res,next)=>{
   const userId = req.params.id
   User.findOne({'_id' :userId})
+      .populate('friends')
       .then((user)=>{
         return res.status(200).json(user)
       })

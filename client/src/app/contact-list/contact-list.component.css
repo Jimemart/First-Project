@@ -1,0 +1,32 @@
+.header{
+  height: 80px;
+  background: #212121;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  text-align:center;
+  letter-spacing: 2px;
+  z-index:1
+}
+.usuarios{
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size:16px;
+  font-weight: lighter;
+  vertical-align: 100%;
+}
+.avatar{
+  margin:10px;
+  width: 40px;
+  border-radius:20px;
+}
+.each{
+  margin-top:24px;
+}
+.contenedor{
+  position: relative;
+  top:80px;
+}

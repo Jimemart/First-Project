@@ -15,6 +15,7 @@ import {routes} from './routes';
 import { GroupService } from './services/group.service'
 import { ActivityService } from './services/activity.service'
 
+
 import { MultiformComponent } from './multiform/multiform.component';
 import { PickPlatComponent } from './pick-plat/pick-plat.component';
 import {IsLoggedInService} from './services/isLoggedIn.canactivate.service'
@@ -33,6 +34,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SingleGroupComponent } from './single-group/single-group.component';
 import { ActivityComponent } from './activity/activity.component';
 import { BrowserComponent } from './browser/browser.component';
+import { ChaService } from './services/cha.service';
+import { ChatComponent } from './chat/chat.component';
+import { ContactListComponent } from './contact-list/contact-list.component'
 
 
 
@@ -53,7 +57,10 @@ import { BrowserComponent } from './browser/browser.component';
     WelcomeComponent,
     SingleGroupComponent,
     ActivityComponent,
-    BrowserComponent
+    BrowserComponent,
+    ChatComponent,
+    ContactListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -72,6 +79,7 @@ import { BrowserComponent } from './browser/browser.component';
               AddGameService,
               EditUserService,
               GroupService,
+              ChaService,
               ActivityService],
   bootstrap: [AppComponent]
 })
