@@ -8,7 +8,7 @@
 </div>
 <div class="users-list">
 <div *ngIf="foundUsers.length > 0" >
-  <h3>Suggested Users</h3>
+  <h3 class="title">Suggested Users</h3>
   <div *ngFor="let user of foundUsers">
     <a [routerLink]="['/profile', user._id]">
       <img class="avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
@@ -17,7 +17,7 @@
   </div>
 </div>
 <div *ngIf="foundGroups.length > 0" class="position">
-  <h3>Sugested Groups</h3>
+  <h3 class="title">Sugested Groups</h3>
  <div  *ngFor = 'let game of foundGroups' class="inline" [attr.data-value]="game.id" #selectedGame >
    <a [routerLink] = "['/group', game._id]">
    <img *ngIf="game.groupImage" [src] ='game.groupImage' height="93" width="156">
@@ -27,7 +27,7 @@
  </div>
 </div>
 <div *ngIf="foundGames.length === 6" class="position">
-  <h3>Sugested Games</h3>
+  <h3 class="title">Sugested Games</h3>
  <div  *ngFor = 'let game of foundGames' class="inline" [attr.data-value]="game.id" #selectedGame >
    <a [routerLink] = "['/game', game.id]">
    <img *ngIf="game.cover" [src] ='game.cover.url' height="93" width="156">
@@ -35,5 +35,30 @@
    <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="93" width="156"(click)="showme(myGame)">
    <h5>{{game.name}}</h5>
  </div>
+</div>
+</div>
+<div class="menu">
+<div class="icons">
+  <a [routerLink] ='["/home"]'>
+  <i class="material-icons nav-bar">home</i>
+
+</a>
+</div>
+<div class="icons" id="active">
+  <a [routerLink] ='["/browse"]'>
+  <i class="material-icons nav-bar">explore</i>
+      <p>Contact</p>
+</a>
+</div>
+<div class="icons"  >
+  <a [routerLink] = '["/contact"]'>
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+
+</a>
+</div>
+<div class="icons">
+  <a [routerLink]="['/profile', user._id]" *ngIf="user">
+  <i class="material-icons nav-bar">perm_identity</i>
+</a>
 </div>
 </div>

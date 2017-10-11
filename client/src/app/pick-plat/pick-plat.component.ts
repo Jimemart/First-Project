@@ -13,16 +13,19 @@ export class PickPlatComponent implements OnInit {
   ngOnInit() {
   }
 
-  addPlat(elem){
+  addPlat(elem,cover){
       let index = this.myPlats.indexOf(elem.getAttribute('data-value'))
       if(index >= 0){
         this.myPlats.splice(index,1)
+        cover.classList.add('back')
         elem.classList.remove('selected')
       }else{
         this.myPlats.push(elem.getAttribute('data-value'))
+        cover.classList.remove('back')
         elem.classList.add('selected')
-      }
 
+      }
+      console.log(cover)
   }
   sendAndNext(){
     this.auth.platList = this.myPlats

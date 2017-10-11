@@ -7,5 +7,33 @@
     <img class="avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
     <span class="usuarios">{{u.username}}</span>
   </div>
+  <div *ngFor="let g of groups">
+    <img class="avatar" [src]="g.groupImage" alt="">
+    <span class="usuarios">{{g.groupname}}</span>
+  </div>
+</div>
+</div>
+<div class="menu">
+<div class="icons">
+  <a [routerLink] ='["/home"]'>
+  <i class="material-icons nav-bar">home</i>
+
+</a>
+</div>
+<div class="icons">
+  <a [routerLink] ='["/browse"]'>
+  <i class="material-icons nav-bar">explore</i>
+</a>
+</div>
+<div class="icons"  id="active">
+  <a [routerLink] = '["/contact"]'>
+  <i class="material-icons nav-bar">chat_bubble_outline</i>
+    <p>Contact</p>
+</a>
+</div>
+<div class="icons">
+  <a [routerLink]="['/profile', user._id]" *ngIf="user">
+  <i class="material-icons nav-bar">perm_identity</i>
+</a>
 </div>
 </div>

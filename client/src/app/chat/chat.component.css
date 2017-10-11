@@ -60,7 +60,8 @@
   position: absolute;
   top:90px;
   width: 100%;
-
+  overflow: scroll;
+  height:80%;
 }
 
 .mine{

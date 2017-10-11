@@ -11,11 +11,16 @@ import { GetListService } from '../services/get-list.service'
 export class BrowserComponent implements OnInit {
   foundGames:Array<object> = []
   searchBar:string
+  user:object
   foundUsers:Array<object> = []
   foundGroups:Array<object> =[]
   constructor( public auth:AuthService, public add:AddGameService, public getList:GetListService) { }
 
   ngOnInit() {
+    this.auth.isLoggedIn()
+          .subscribe(user =>{
+            this.user = user
+          })
   }
 
   searchAll(){

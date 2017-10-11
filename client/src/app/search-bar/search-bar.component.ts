@@ -30,15 +30,17 @@ export class SearchBarComponent implements OnInit {
               console.log(this.foundGames)
             })
   }
-  selected(elem){
+  selected(elem, cover){
       let index = this.add.gamesToAdd.indexOf(elem.getAttribute('data-value'))
       if(index>=0){
-        this.add.gamesToAdd.splice(index,1)
-        elem.classList.remove('selected')
+
+        cover.classList.add('back')
       }else{
         this.add.gamesToAdd.push(elem.getAttribute('data-value'))
-        elem.classList.add('selected')
+
+        cover.classList.remove('back')
       }
+      console.log(cover)
   }
   sendGames(){
     this.auth.gamesList = this.add.gamesToAdd

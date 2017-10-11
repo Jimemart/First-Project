@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 import { AddGameService } from '../services/add-game.service'
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
   games: [],
   platforms: []
 }
-  constructor( public auth:AuthService, public addGame:AddGameService) { }
+  constructor( public auth:AuthService, public addGame:AddGameService, private router:Router) { }
 
   ngOnInit() {
     // this.addGame.gamesToAdd.forEach(game =>{
@@ -38,7 +39,7 @@ export class SignupComponent implements OnInit {
       if(username != "" && password != "" && email != ""){
         console.log(`Signup with ${username} ${password} ${email}`)
         this.auth.signup(username, password,email, games, platforms)
-        .map(user => console.log(user))
+        .map(user => this.router.navigate(['/login']))
         .subscribe();
       } else{
         console.log("You must set a username and a password");

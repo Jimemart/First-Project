@@ -6,8 +6,9 @@
 <div *ngIf="!nosearching" >
 <div class="games" >
   <div *ngFor="let game of games" [attr.data-value]="game.id" class="inline" #myGame>
+  <div class="inline cover back" #cover  (click)="showme(myGame,cover)"></div>
   <img *ngIf="!game.cover" class="bottom"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="160"(click)="showme(myGame)">
-  <img *ngIf="game.cover" [src] ='game.cover.url' height="160" (click)="showme(myGame)">
+  <img *ngIf="game.cover" [src] ='game.cover.url' height="160" >
   </div>
   </div>
 </div>

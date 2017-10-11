@@ -31,14 +31,16 @@ export class GameListComponent implements OnInit {
   }
 
 
-  showme(elem){
+  showme(elem,cover){
     let index = this.addService.gamesToAdd.indexOf(elem.getAttribute('data-value'))
     if(index>=0){
       this.addService.gamesToAdd.splice(index,1)
       elem.classList.remove('selected')
+      cover.classList.add('back')
     }else{
       this.addService.gamesToAdd.push(elem.getAttribute('data-value'))
       elem.classList.add('selected')
+      cover.classList.remove('back')
     }
 
     }
@@ -50,7 +52,7 @@ export class GameListComponent implements OnInit {
   }
   searchingGames(val){
     this.nosearching = val;
-    
+
   }
 
 }

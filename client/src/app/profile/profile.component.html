@@ -100,7 +100,9 @@
 </a>
 </div>
 <div class="icons">
+  <a [routerLink] = '["/contact"]'>
   <i class="material-icons nav-bar">chat_bubble_outline</i>
+</a>
 </div>
 <div class="icons" id="active">
   <a *ngIf="LoggedUser" [routerLink]="['/profile', LoggedUser._id]">

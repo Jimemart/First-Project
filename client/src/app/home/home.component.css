@@ -100,3 +100,8 @@ ul > li {
   text-align: center;
   display: inline-block;
 }
+@media (min-width:1200px){
+  .content{
+    left: 15%;
+  }
+}

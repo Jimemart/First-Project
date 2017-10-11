@@ -5,6 +5,8 @@
   margin-left:20px;
   padding-left:20px;
   border-left: 2px solid #690EAC;
+  max-width: 940px;
+  margin: 0 auto;
 }
 .first{
   font-size: 12px;

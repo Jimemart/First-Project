@@ -3,9 +3,7 @@
   display: inline-block;
   margin: 10px;
 }
-.selected{
-  border: 1px solid red;
-}
+
 .searchBar{
   position: absolute;
     top: 104px;
@@ -22,6 +20,7 @@
   top:104px;
   right:16px;
   color:grey;
+  cursor: pointer;
 }
 .searchBar:focus{
   border:none !important;
@@ -29,4 +28,26 @@
 .game-list{
   position: absolute;
   top: 172px;
+}
+ .cover{
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  margin: 0;
+
+}
+.back{
+  background-color: rgba(62, 63, 63, 0.5)
+}
+@media (min-width:1200px) {
+  .searchBar{
+    width:730px;
+    left:30%;
+  }
+  .search{
+    right:32%;
+  }
+  .game-list{
+    left:20%;
+  }
 }

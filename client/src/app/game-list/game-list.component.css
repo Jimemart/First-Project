@@ -2,9 +2,6 @@
   display: inline-block;
   margin: 10px;
 }
-.selected{
-  border: 2px solid red
-}
 .bottom{
   margin-top:16px;
 }
@@ -34,4 +31,20 @@
 .games{
   position: absolute;
   top: 172px;
+}
+.cover{
+ width: 160px;
+ height: 160px;
+ position: absolute;
+ margin: 0;
+
+}
+.back{
+ background-color: rgba(62, 63, 63, 0.5)
+}
+@media (min-width: 1200px){
+  .games{
+    left:30%;
+    max-width: 800px;
+  }
 }

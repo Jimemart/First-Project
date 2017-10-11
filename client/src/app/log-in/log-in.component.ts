@@ -29,7 +29,6 @@ export class LogInComponent implements OnInit {
     if(username != "" && password != ""){
       console.log(`Login with ${username} ${password}`)
       this.auth.login(username, password)
-      .map(user => console.log(user))
       .subscribe((user) =>{
         this.router.navigate(['/home'])
       });

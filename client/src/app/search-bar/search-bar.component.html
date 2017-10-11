@@ -8,7 +8,8 @@
 <div *ngIf="foundGames.length === 6" class="game-list">
 
  <div  *ngFor = 'let game of foundGames' class="inline" [attr.data-value]="game.id" #selectedGame >
-   <img *ngIf="game.cover" [src] ='game.cover.url'  (click) = "selected(selectedGame)" height="160">
+   <div class="inline cover back" #cover  (click) = "selected(selectedGame, cover)"></div>
+   <img *ngIf="game.cover" [src] ='game.cover.url'  height="160">
    <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="160"(click)="showme(myGame)">
  </div>
 </div>

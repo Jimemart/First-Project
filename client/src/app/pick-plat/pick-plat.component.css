@@ -1,11 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
-.selected{
-  border: 2px solid red
-}
 .inline{
-  display: inline;
+  display: inline-block;
 }
  .right{
    margin-left: 8px;
@@ -19,6 +15,8 @@
 .container{
   position: absolute;
   bottom:208px;
+  max-width:350px;
+  margin: 0 auto;
 }
 .next{
   font-size:30px;
@@ -51,4 +49,23 @@
 }
 .deff >p{
   font-size: 14px;
+}
+.container .cover{
+  width: 160px;
+  height: 160px;
+  position: absolute;
+
+}
+.back{
+  background-color: rgba(62, 63, 63, 0.5)
+}
+@media (min-width: 1200px){
+  .container{
+    left:40%;
+    bottom:400px;
+  }
+  .deff{
+    top:200px;
+    left:36%;
+  }
 }
