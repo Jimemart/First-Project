@@ -14,7 +14,7 @@
 }
 .container{
   position: absolute;
-  bottom:208px;
+  top:172px;
   max-width:350px;
   margin: 0 auto;
 }

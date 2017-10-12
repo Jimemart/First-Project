@@ -14,7 +14,6 @@
       <p class="red">{{mess.message}}</p>
     </div>
     <div *ngIf="mess.sender !== user._id" class="other message">
-
       <p class="gray"><span *ngIf="mess.nameOfSender" class="senderName">{{mess.nameOfSender}}: </span><br *ngIf="mess.nameOfSender" />{{mess.message}}</p>
     </div>
   </div>

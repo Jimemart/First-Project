@@ -69,7 +69,7 @@
 </div>
 <nav>
   <ul>
-      <li class="current game-comp" #games data-value="1">Games</li>
+      <li class="current game-comp" #games data-value="1" (click)='changeContent(games)'>Games</li>
       <li class="game-comp" #activity data-value="2" (click)='changeContent(activity)'>Activity</li>
       <li class="game-comp" #posts  data-value="3">Posts</li>
   </ul>

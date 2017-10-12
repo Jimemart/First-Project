@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
                     setInterval(()=>{
                         this.getMessages(this.roomName)
-                        this.updateScroll(this.convo)
+                        // this.updateScroll(this.convo)
                     },1000)
                   })
               })
