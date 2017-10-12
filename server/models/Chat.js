@@ -6,6 +6,7 @@ const ChatSchema = new Schema({
   sender: Schema.Types.ObjectId,
   message: String,
   recieve: Schema.Types.ObjectId,
+  nameOfSender: String,
   updated_at: { type: Date, default: Date.now },
 });
 

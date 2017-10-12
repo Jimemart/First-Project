@@ -26,8 +26,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
               private router:Router) {}
 
   ngOnInit() {
-      this.auth.isLoggedIn()
-        .subscribe(user =>{
+      this.auth.isLoggedIn().subscribe(user =>{
           this.user = user
           this.route.params
               .subscribe(params =>{
@@ -60,7 +59,8 @@ updateScroll(elem){
       message : text.value,
       sender: this.user['_id'],
       room : this.roomName,
-      recieve: this.reciever
+      recieve: this.reciever,
+      nameOfSender: this.user['username']
     }
 
     text.value = ''

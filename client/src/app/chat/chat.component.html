@@ -3,13 +3,19 @@
   <img class="avatar position" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
   <span class="usuarios position">{{recieverUser.username}}</span>
 </div>
+<div class="header" *ngIf="!recieverUser">
+  <i class="material-icons back position" (click)="goback()">keyboard_arrow_left</i>
+  <img class="avatar position" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100" alt="">
+  <span class="usuarios position">{{roomName}}</span>
+</div>
 <div  class="conversation"  id="convo">
   <div *ngFor="let mess of convMessages">
     <div *ngIf="mess.sender === user._id" class="mine message">
       <p class="red">{{mess.message}}</p>
     </div>
     <div *ngIf="mess.sender !== user._id" class="other message">
-      <p class="gray">{{mess.message}}</p>
+
+      <p class="gray"><span *ngIf="mess.nameOfSender" class="senderName">{{mess.nameOfSender}}: </span><br *ngIf="mess.nameOfSender" />{{mess.message}}</p>
     </div>
   </div>
 </div>

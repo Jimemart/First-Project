@@ -38,4 +38,8 @@ export class ContactListComponent implements OnInit {
     this.router.navigate(['/chat', roomName, id])
   }
 
+  navigateFromGroup(elem, id){
+    const roomName = elem.replace(/ /g,"")
+    this.router.navigate(['/chat', roomName, id])
+  }
 }

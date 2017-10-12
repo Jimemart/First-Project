@@ -11,7 +11,8 @@ router.post('/save/message',(req,res,next)=>{
     room: req.body.message.room,
     sender: req.body.message.sender,
     message: req.body.message.message,
-    recieve: req.body.message.recieve
+    recieve: req.body.message.recieve,
+    nameOfSender: req.body.message.nameOfSender
   }).save()
     .then(message => res.status(200).json(message))
     .catch(err => {
