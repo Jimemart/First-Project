@@ -74,7 +74,6 @@ app.use('/api', singleGame)
 app.use('/api', checkDb)
 app.use('/api', chatRoute)
 
-
 app.use((req, res, next) => {
  res.sendfile(__dirname + '/public/index.html');
 });

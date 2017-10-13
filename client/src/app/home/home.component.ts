@@ -34,8 +34,6 @@ export class HomeComponent implements OnInit {
 
 getRandomId(arr){
   var random = Math.floor(Math.random() * ((arr.length-1) - 1 ))
-  console.log(arr)
-  console.log(arr[random])
   return arr[random]
 }
 
@@ -43,8 +41,10 @@ getGames(gamesArr){
   gamesArr.forEach(e =>{
     this.add.findGame(e)
             .subscribe(game =>{
-              this.add.turnPic(game)
-              this.userGames.push(game)
+              if(game[0]){
+                this.add.turnPic(game)
+                this.userGames.push(game[0])
+              }
             })
   })
 }
@@ -74,9 +74,11 @@ getInterested(gameArr){
   gameArr[0].forEach(e =>{
     this.add.findGame(e)
             .subscribe(game =>{
-              this.add.turnPic(game)
-              this.youMayLike.push(game)
-
+              if(game[0]){
+                console.log(game[0])
+                this.add.turnPic(game)
+                this.youMayLike.push(game[0])
+              }
             })
   })
 }

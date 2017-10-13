@@ -17,6 +17,7 @@ export class ContactListComponent implements OnInit {
   constructor(private auth:AuthService, private add:AddGameService, private router: Router, private group:GroupService) { }
 
   ngOnInit() {
+    
     this.auth.isLoggedIn()
         .subscribe(user => {
           this.user = user

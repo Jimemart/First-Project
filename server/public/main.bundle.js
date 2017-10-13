@@ -78,7 +78,6 @@ var ActivityComponent = (function () {
             _this.act.getActivitiesFromUser(_this.profileId)
                 .subscribe(function (acts) {
                 _this.userActivities = acts;
-                console.log(_this.userActivities);
             });
         });
     };
@@ -146,7 +145,8 @@ var AppComponent = (function () {
         this.auth = auth;
         this.title = 'app';
     }
-    ;
+    AppComponent.prototype.ngOnInit = function () {
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -431,7 +431,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\" *ngIf=\"recieverUser\">\n  <i class=\"material-icons back position\" (click)=\"goback()\">keyboard_arrow_left</i>\n  <img class=\"avatar position\" src=\"https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100\" alt=\"\">\n  <span class=\"usuarios position\">{{recieverUser.username}}</span>\n</div>\n<div class=\"header\" *ngIf=\"!recieverUser\">\n  <i class=\"material-icons back position\" (click)=\"goback()\">keyboard_arrow_left</i>\n  <img class=\"avatar position\" src=\"https://store.playstation.com/store/api/chihiro/00_09_000/container/ES/es/999/EP4497-CUSA01439_00-AV00000000000003/1499640335000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100\" alt=\"\">\n  <span class=\"usuarios position\">{{roomName}}</span>\n</div>\n<div  class=\"conversation\"  id=\"convo\">\n  <div *ngFor=\"let mess of convMessages\">\n    <div *ngIf=\"mess.sender === user._id\" class=\"mine message\">\n      <p class=\"red\">{{mess.message}}</p>\n    </div>\n    <div *ngIf=\"mess.sender !== user._id\" class=\"other message\">\n\n      <p class=\"gray\"><span *ngIf=\"mess.nameOfSender\" class=\"senderName\">{{mess.nameOfSender}}: </span><br *ngIf=\"mess.nameOfSender\" />{{mess.message}}</p>\n    </div>\n  </div>\n</div>\n\n<div class=\"write\">\n<input type=\"text\" #message>\n<i class=\"material-icons send\" (click) = \"sendMessage(message, convo)\">chevron_right</i>\n</div>\n"
+module.exports = "<div class=\"header\" *ngIf=\"recieverUser\">\n  <i class=\"material-icons back position\" (click)=\"goback()\">keyboard_arrow_left</i>\n  <img class=\"avatar position\" src=\"../../assets/images/gerald.jpg\" alt=\"\">\n  <span class=\"usuarios position\">{{recieverUser.username}}</span>\n</div>\n<div class=\"header\" *ngIf=\"!recieverUser\">\n  <i class=\"material-icons back position\" (click)=\"goback()\">keyboard_arrow_left</i>\n  <img class=\"avatar position\" src=\"../../assets/images/gerald.jpg\" alt=\"\">\n  <span class=\"usuarios position\">{{roomName}}</span>\n</div>\n<div  class=\"conversation\"  id=\"convo\">\n  <div *ngFor=\"let mess of convMessages\">\n    <div *ngIf=\"mess.sender === user._id\" class=\"mine message\">\n      <p class=\"red\">{{mess.message}}</p>\n    </div>\n    <div *ngIf=\"mess.sender !== user._id\" class=\"other message\">\n      <p class=\"gray\"><span *ngIf=\"mess.nameOfSender\" class=\"senderName\">{{mess.nameOfSender}}: </span><br *ngIf=\"mess.nameOfSender\" />{{mess.message}}</p>\n    </div>\n  </div>\n</div>\n\n<div class=\"write\">\n<input type=\"text\" #message>\n<i class=\"material-icons send\" (click) = \"sendMessage(message, convo)\">chevron_right</i>\n</div>\n"
 
 /***/ }),
 
@@ -468,17 +468,16 @@ var ChatComponent = (function () {
         this.add = add;
         this.elemRef = elemRef;
         this.router = router;
+        this.messages = [];
     }
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.auth.isLoggedIn().subscribe(function (user) {
             _this.user = user;
-            _this.route.params
-                .subscribe(function (params) {
+            _this.route.params.subscribe(function (params) {
                 _this.roomName = params['room'];
                 _this.reciever = params['id'];
-                _this.add.searchProfile(_this.reciever)
-                    .subscribe(function (user) {
+                _this.add.searchProfile(_this.reciever).subscribe(function (user) {
                     _this.recieverUser = user;
                     _this.getMessages(_this.roomName);
                     setInterval(function () {
@@ -1455,7 +1454,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../material/prebuilt-themes/indigo-pink.css"), "");
 
 // module
-exports.push([module.i, ".inline{\n  display: inline-block;\n}\n .right{\n   margin-left: 8px;\n }\n .left{\n   margin-left: 16px;\n }\n.bottom{\n  margin-top:16px;\n}\n.container{\n  position: absolute;\n  top:172px;\n  max-width:350px;\n  margin: 0 auto;\n}\n.next{\n  font-size:30px;\n  position: fixed;\n  top:33px;\n  right: 26px;\n}\n.header{\n  height: 80px;\n  background: #212121;\n  font-family: 'Source Sans Pro', sans-serif;\n  color:white;\n  position:fixed;\n  top:0;\n  width:100%;\n  font-size:24px;\n  text-align:center;\n  letter-spacing: 2px;\n}\n.deff{\n  position: absolute;\n  top: 104px;\n  color: #fff;\n  text-align: center;\n}\n.deff > h4, .deff >p{\n  margin-bottom: 0;\n  margin-top: 0;\n  font-family: 'Source Sans Pro', sans-serif;\n}\n.deff >p{\n  font-size: 14px;\n}\n.container .cover{\n  width: 160px;\n  height: 160px;\n  position: absolute;\n\n}\n.back{\n  background-color: rgba(62, 63, 63, 0.5)\n}\n@media (min-width: 1200px){\n  .container{\n    left:40%;\n    bottom:400px;\n  }\n  .deff{\n    top:200px;\n    left:36%;\n  }\n}\n", ""]);
+exports.push([module.i, ".inline{\n  display: inline-block;\n}\n .right{\n   margin-left: 8px;\n }\n .left{\n   margin-left: 16px;\n }\n.bottom{\n  margin-top:16px;\n}\n.container{\n  position: absolute;\n  top:172px;\n  max-width:350px;\n  margin: 0 auto;\n}\n.next{\n  font-size:30px;\n  position: fixed;\n  top:33px;\n  right: 26px;\n}\n.header{\n  height: 80px;\n  background: #212121;\n  font-family: 'Source Sans Pro', sans-serif;\n  color:white;\n  position:fixed;\n  top:0;\n  width:100%;\n  font-size:24px;\n  text-align:center;\n  letter-spacing: 2px;\n}\n.deff{\n  position: absolute;\n  top: 104px;\n  color: #fff;\n  text-align: center;\n}\n.deff > h4, .deff >p{\n  margin-bottom: 0;\n  margin-top: 0;\n  font-family: 'Source Sans Pro', sans-serif;\n}\n.deff >p{\n  font-size: 14px;\n}\n.container .cover{\n  width: 160px;\n  height: 160px;\n  position: absolute;\n\n}\n.back{\n  background-color: rgba(62, 63, 63, 0.5)\n}\n@media (min-width: 1200px){\n  .container{\n    left:40%;\n    top:260px;\n  }\n  .deff{\n    top:200px;\n    left:36%;\n  }\n}\n", ""]);
 
 // exports
 
@@ -1468,7 +1467,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pick-plat/pick-plat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h3> Platforms </h3>\n  <i class=\"material-icons next\" (click)='sendAndNext()'>navigate_next</i>\n  <!-- <button (click)='sendAndNext()'>Next</button> -->\n</div>\n<div class=\"deff\">\n  <h4> Which platform do you use the most?</h4>\n  <p>Pick the ones you use so we can adapt the content and the sugestions to your preferences</p>\n</div>\n<div class=\"container\">\n<div class=\"inline left\" [attr.data-value]=\"48\" #play>\n  <div class=\"inline cover back\" #p1 (click)=\"addPlat(play,p1)\">\n  </div>\n  <img src=\"https://static.blog.playstation.com/wp-content/uploads/avatars//Playstation-logo.png?m=1466514976\"  height=\"160\">\n\n</div>\n<div class=\"inline right\" [attr.data-value]=\"49\" #xbox>\n  <div class=\"inline cover back\" #x1 (click)=\"addPlat(xbox,x1)\"></div>\n  <img src=\"http://image.techtimes.com/data/images/full/11675/xbox-one-logo.jpg\" (click)=\"addPlat(xbox)\" height=\"160\">\n</div>\n<div class=\"inline left\" [attr.data-value]=\"6\" #pc>\n  <div class=\"inline cover bottom back\" #c1 (click)=\"addPlat(pc,c1)\"></div>\n  <img src=\"https://cdn.worldvectorlogo.com/logos/windows-store.svg\" class=\"bottom\" (click)=\"addPlat(pc)\" height=\"160\">\n\n</div>\n<div class=\"inline right\" [attr.data-value]=\"41\" #nintendo>\n  <div class=\"inline cover  bottom back\" #w1 (click)=\"addPlat(nintendo,w1)\"></div>\n  <img src=\"http://cdn3.computerhoy.com/sites/computerhoy.com/files/editores/user-75989/c1csmnoviaaziww.jpg\" class=\"bottom\" (click)=\"addPlat(nintendo)\" height=\"160\">\n\n</div>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <h3> Platforms </h3>\n  <i class=\"material-icons next\" (click)='sendAndNext()'>navigate_next</i>\n  <!-- <button (click)='sendAndNext()'>Next</button> -->\n</div>\n<div class=\"deff\">\n  <h4> Which platform do you use the most?</h4>\n  <p>Pick the ones you use so we can adapt the content and the sugestions to your preferences</p>\n</div>\n<div class=\"container\">\n<div class=\"inline left\" [attr.data-value]=\"48\" #play>\n  <div class=\"inline cover back\" #p1 (click)=\"addPlat(play,p1)\">\n  </div>\n  <img src=\"../../assets/images/Playstation-logo.png\"  height=\"160\">\n\n</div>\n<div class=\"inline right\" [attr.data-value]=\"49\" #xbox>\n  <div class=\"inline cover back\" #x1 (click)=\"addPlat(xbox,x1)\"></div>\n  <img src=\"../../assets/images/xbox-one-logo.jpg\" (click)=\"addPlat(xbox)\" height=\"160\">\n</div>\n<div class=\"inline left\" [attr.data-value]=\"6\" #pc>\n  <div class=\"inline cover bottom back\" #c1 (click)=\"addPlat(pc,c1)\"></div>\n  <img src=\"../../assets/images/windows-store.svg\" class=\"bottom\" (click)=\"addPlat(pc)\" height=\"160\">\n\n</div>\n<div class=\"inline right\" [attr.data-value]=\"41\" #nintendo>\n  <div class=\"inline cover  bottom back\" #w1 (click)=\"addPlat(nintendo,w1)\"></div>\n  <img src=\"../../assets/images/switch.jpg\" class=\"bottom\" (click)=\"addPlat(nintendo)\" height=\"160\">\n\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1539,7 +1538,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".carousel {\n    position: relative;\n    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);\n    top:80px;\n}\n\n.carousel-inner {\n    position: relative;\n    overflow: hidden;\n    width: 100%;\n    height: 216px;\n}\n.carousel-open:checked + .carousel-item {\n    position: static;\n    opacity: 100;\n}\n\n.carousel-item {\n    position: absolute;\n    opacity: 0;\n    transition: opacity 0.6s ease-out;\n}\n\n.carousel-item img {\n    display: block;\n    height: auto;\n    max-width: 100%;\n}\n#carousel-1:checked ~ .control-1,\n#carousel-2:checked ~ .control-2,\n#carousel-3:checked ~ .control-3 {\n    display: block;\n}\n.carousel-item {\n    position: absolute;\n    opacity: 0;\n    transition: opacity 0.6s ease-out;\n}\n\n.carousel-item img {\n    display: block;\n    height: auto;\n    max-width: 100%;\n}\n\n.carousel-control {\n    background: rgba(0, 0, 0, 0.28);\n    border-radius: 50%;\n    color: #fff;\n    cursor: pointer;\n    display: none;\n    font-size: 40px;\n    height: 40px;\n    line-height: 35px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translate(0, -50%);\n    cursor: pointer;\n    transform: translate(0, -50%);\n    text-align: center;\n    width: 40px;\n    z-index: 10;\n}\n\n.carousel-control.prev {\n    left: 2%;\n}\n\n.carousel-control.next {\n    right: 2%;\n}\n\n.carousel-control:hover {\n    background: rgba(0, 0, 0, 0.8);\n    color: #aaaaaa;\n}\n\n#carousel-1:checked ~ .control-1,\n#carousel-2:checked ~ .control-2,\n#carousel-3:checked ~ .control-3 {\n    display: block;\n}\n\n.carousel-indicators {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    position: absolute;\n    bottom: 2%;\n    left: 0;\n    right: 0;\n    text-align: center;\n    z-index: 10;\n}\n\n.carousel-indicators li {\n    display: inline-block;\n    margin: 0 5px;\n}\n\n.carousel-bullet {\n    color: #fff;\n    cursor: pointer;\n    display: block;\n    font-size: 35px;\n}\n\n.carousel-bullet:hover {\n    color: #aaaaaa;\n}\n\n#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,\n#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,\n#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {\n    color: black;\n}\n\n.saludo{\n  color:white;\n}\n.header{\n  height: 80px;\n  background: #212121;\n  font-family: 'Source Sans Pro', sans-serif;\n  color:white;\n  position:fixed;\n  top:0;\n  width:100%;\n  font-size:24px;\n  text-align:center;\n  letter-spacing: 2px;\n  z-index:1\n}\n#profile-pic{\n  height: 88px;\n  border-radius:50%;\n  margin: 0 auto;\n  margin-top: 24px;\n}\n.name{\n  color:white;\n  text-align: center;\n  font-family: 'Source Sans Pro', sans-serif;\n  font-size:20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top:15px;\n  margin-bottom: 0;\n}\n.location{\n  text-align: center;\n  color: white;\n  margin-top:2px;\n  font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: lighter;\n}\n\n.info-friends-group{\n  height: 88px;\n  width: 91%;\n  border-top: 1px solid rgba(255, 255, 255, 0.12);\n  margin: 0 auto;\n  position: relative;\n  top: 80px;\n  color:white;\n}\n.num{\n  text-align: center;\n  display: inline-block;\n  width: 40%;\n  margin-left:5%;\n  font-family: 'Titillium Web', sans-serif;\n}\n.num > h2, .num1>h2{\n  font-size:24px;\n  font-weight: bold;\n  margin: 21px 0 0 0;\n}\n.num > h4, .num1>h4{\n  font-size: 12px;\n  margin-top: 0px;\n}\n.toGroups > h4{\n  margin: 0;\n  font-size: 12px;\n  color:white;\n}\n.num1{\n  display: inline-block;\n  width:31%;\n  margin-left:1%;\n  font-family: 'Titillium Web', sans-serif;\n  text-align: center;\n}\n.add{\n  background: #fd2249;\n  color:white;\n  width:95px;\n  height:32px;\n  border:none;\n    font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  vertical-align: 70%;\n}\nnav{\n  position: relative;\n  top:80px;\n  margin-bottom:24px;\n}\nnav ul {\n  background: #212121;\n  color:#fff;\n  font-family: 'Source Sans Pro', sans-serif;\n  font-size:12px;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  padding: 0;\n  max-width: 1200px;\n  list-style: none;\n  -ms-flex-flow: row wrap;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  /*border-bottom: 1px solid #e3e3e3;*/\n}\n\nnav li {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin: 0;\n  text-align: center;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 16px;\n}\n\n\n\n/* The line */\nnav li:first-child::before {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 80%;\n  height: 4px;\n  background: #3908CC;\n  content: '';\n  transition: -webkit-transform 0.3s;\n  transition: transform 0.3s;\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n\n/* Move the line */\nnav li:first-child.current ~ li:last-child::before {\n  -webkit-transform: translate3d(-112.5%, 0, 0);\n  transform: translate3d(-112.5%, 0, 0);\n}\n\nnav li:last-child.current::before {\n  -webkit-transform: translate3d(12.5%, 0, 0);\n  transform: translate3d(12.5%, 0, 0);\n}\n.usergames{\n  color:white;\n  position: relative;\n  top:80px;\n}\n\n.game-inf{\n  display: inline-block;\n  width:40%;\n  margin-left:6%;\n  text-align: center;\n  vertical-align: top;\n}\n.game-inf > h5{\n  font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: lighter;\n  margin-top:0px;\n}\n.menu{\n  position: fixed;\n  bottom:0;\n  height: 56px;\n  background: #212121;\n  width: 100%;\n}\n.nav-bar{\n  color:rgba(255, 255, 255, 0.64);\n  vertical-align: middle;\n\n}\n#active{\n  padding-top:5px;\n\n}\n#active .nav-bar{\n  color:white;\n}\n.icons p{\n  margin:0;\n  color:white;\n  font-family: 'Titillium Web', sans-serif;\n  font-size: 12px;\n}\n.icons{\n  vertical-align: top;\n  padding-top:15px;\n  width: 24%;\n  text-align: center;\n  display: inline-block;\n}\n", ""]);
+exports.push([module.i, ".carousel {\n    position: relative;\n    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);\n    top:80px;\n}\n\n.carousel-inner {\n    position: relative;\n    overflow: hidden;\n    width: 100%;\n    height: 216px;\n}\n.carousel-open:checked + .carousel-item {\n    position: static;\n    opacity: 100;\n}\n\n.carousel-item {\n    position: absolute;\n    opacity: 0;\n    transition: opacity 0.6s ease-out;\n}\n\n.carousel-item img {\n    display: block;\n    height: auto;\n    max-width: 100%;\n}\n#carousel-1:checked ~ .control-1,\n#carousel-2:checked ~ .control-2,\n#carousel-3:checked ~ .control-3 {\n    display: block;\n}\n.carousel-item {\n    position: absolute;\n    opacity: 0;\n    transition: opacity 0.6s ease-out;\n}\n\n.carousel-item img {\n    display: block;\n    height: auto;\n    max-width: 100%;\n}\n\n.carousel-control {\n    background: rgba(0, 0, 0, 0.28);\n    border-radius: 50%;\n    color: #fff;\n    cursor: pointer;\n    display: none;\n    font-size: 40px;\n    height: 40px;\n    line-height: 35px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translate(0, -50%);\n    cursor: pointer;\n    transform: translate(0, -50%);\n    text-align: center;\n    width: 40px;\n    z-index: 10;\n}\n\n.carousel-control.prev {\n    left: 2%;\n}\n\n.carousel-control.next {\n    right: 2%;\n}\n\n.carousel-control:hover {\n    background: rgba(0, 0, 0, 0.8);\n    color: #aaaaaa;\n}\n\n#carousel-1:checked ~ .control-1,\n#carousel-2:checked ~ .control-2,\n#carousel-3:checked ~ .control-3 {\n    display: block;\n}\n\n.carousel-indicators {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    position: absolute;\n    bottom: 2%;\n    left: 0;\n    right: 0;\n    text-align: center;\n    z-index: 10;\n}\n\n.carousel-indicators li {\n    display: inline-block;\n    margin: 0 5px;\n}\n\n.carousel-bullet {\n    color: #fff;\n    cursor: pointer;\n    display: block;\n    font-size: 35px;\n}\n\n.carousel-bullet:hover {\n    color: #aaaaaa;\n}\n\n#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,\n#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,\n#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {\n    color: black;\n}\n\n.saludo{\n  color:white;\n}\n.header{\n  height: 80px;\n  background: #212121;\n  font-family: 'Source Sans Pro', sans-serif;\n  color:white;\n  position:fixed;\n  top:0;\n  width:100%;\n  font-size:24px;\n  text-align:center;\n  letter-spacing: 2px;\n  z-index:1\n}\n#profile-pic{\n  height: 88px;\n  border-radius:50%;\n  margin: 0 auto;\n  margin-top: 24px;\n}\n.name{\n  color:white;\n  text-align: center;\n  font-family: 'Source Sans Pro', sans-serif;\n  font-size:20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top:15px;\n  margin-bottom: 0;\n}\n.location{\n  text-align: center;\n  color: white;\n  margin-top:2px;\n  font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: lighter;\n}\n\n.info-friends-group{\n  height: 88px;\n  width: 91%;\n  border-top: 1px solid rgba(255, 255, 255, 0.12);\n  margin: 0 auto;\n  position: relative;\n  top: 80px;\n  color:white;\n}\n.num{\n  text-align: center;\n  display: inline-block;\n  width: 40%;\n  margin-left:5%;\n  font-family: 'Titillium Web', sans-serif;\n}\n.num > h2, .num1>h2{\n  font-size:24px;\n  font-weight: bold;\n  margin: 21px 0 0 0;\n}\n.num > h4, .num1>h4{\n  font-size: 12px;\n  margin-top: 0px;\n}\n.toGroups > h4{\n  margin: 0;\n  font-size: 12px;\n  color:white;\n}\n.num1{\n  display: inline-block;\n  width:31%;\n  margin-left:1%;\n  font-family: 'Titillium Web', sans-serif;\n  text-align: center;\n}\n.add{\n  background: #fd2249;\n  color:white;\n  width:95px;\n  height:32px;\n  border:none;\n    font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  vertical-align: 70%;\n}\nnav{\n  position: relative;\n  top:80px;\n  margin-bottom:24px;\n}\nnav ul {\n  background: #212121;\n  color:#fff;\n  font-family: 'Source Sans Pro', sans-serif;\n  font-size:12px;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  padding: 0;\n  max-width: 1200px;\n  list-style: none;\n  -ms-flex-flow: row wrap;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  /*border-bottom: 1px solid #e3e3e3;*/\n}\n\nnav li {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin: 0;\n  text-align: center;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 16px;\n}\n\n\n\n/* The line */\nnav li.current:before {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 4px;\n  background: #3908CC;\n  content: '';\n  transition: -webkit-transform 0.3s;\n  transition: transform 0.3s;\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n\n/* Move the line */\n/*nav li:first-child.current ~ li:last-child::before {\n  -webkit-transform: translate3d(-112.5%, 0, 0);\n  transform: translate3d(-112.5%, 0, 0);\n}\n\nnav li:last-child.current::before {\n  -webkit-transform: translate3d(12.5%, 0, 0);\n  transform: translate3d(12.5%, 0, 0);\n}*/\n.usergames{\n  color:white;\n  position: relative;\n  top:80px;\n}\n\n.game-inf{\n  display: inline-block;\n  width:40%;\n  margin-left:6%;\n  text-align: center;\n  vertical-align: top;\n}\n.game-inf > h5{\n  font-family: 'Titillium Web', sans-serif;\n  font-size:12px;\n  font-weight: lighter;\n  margin-top:0px;\n}\n.menu{\n  position: fixed;\n  bottom:0;\n  height: 56px;\n  background: #212121;\n  width: 100%;\n}\n.nav-bar{\n  color:rgba(255, 255, 255, 0.64);\n  vertical-align: middle;\n\n}\n#active{\n  padding-top:5px;\n\n}\n#active .nav-bar{\n  color:white;\n}\n.icons p{\n  margin:0;\n  color:white;\n  font-family: 'Titillium Web', sans-serif;\n  font-size: 12px;\n}\n.icons{\n  vertical-align: top;\n  padding-top:15px;\n  width: 24%;\n  text-align: center;\n  display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -1552,7 +1551,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"header\">\n  <h3 *ngIf='myProfile'> My Profile </h3>\n  <h3 *ngIf=\"profileUser && !myProfile\">{{profileUser.username}}</h3>\n</div>\n<div *ngIf=\"profileUser\">\n<div class=\"carousel\">\n    <div class=\"carousel-inner\">\n        <input class=\"carousel-open\" type=\"radio\" id=\"carousel-1\" name=\"carousel\" aria-hidden=\"true\" hidden=\"\" checked=\"checked\">\n        <div class=\"carousel-item\">\n          <div class=\"main-view\">\n            <img *ngIf=\"profileUser.image\" [src]='profileUser.image' height=\"88\" id=\"profile-pic\">\n            <img *ngIf=\"!profileUser.image\" src= \"https://avatarfiles.alphacoders.com/840/84098.jpg\" height=\"88\" id=\"profile-pic\">\n            <h3 class=\"name\">{{profileUser.username}}</h3>\n            <p *ngIf=\"profileUser.location\"><span>{{profileUser.location.city}}</span> / <span>{{profileUser.location.country}}</span></p>\n            <p *ngIf=\"!profileUser.location\" class=\"location\"><span>City</span> / <span>Country</span></p>\n          </div>\n        </div>\n        <input class=\"carousel-open\" type=\"radio\" id=\"carousel-3\" name=\"carousel\" aria-hidden=\"true\" hidden=\"\">\n        <div class=\"carousel-item\">\n              <div class=\"information\">\n              <h1 class=\"saludo\"> Hola {{profileUser.username}}</h1>\n              </div>\n\n        </div>\n\n        <ol class=\"carousel-indicators\">\n            <li>\n                <label for=\"carousel-1\" class=\"carousel-bullet\">•</label>\n            </li>\n            <li>\n                <label for=\"carousel-3\" class=\"carousel-bullet\">•</label>\n            </li>\n        </ol>\n    </div>\n</div>\n<div *ngIf=\"myProfile\"class=\"info-friends-group\">\n  <div class=\"num\">\n    <h2 *ngIf=\"profileUser.friends\">{{profileUser.friends.length}}</h2>\n    <h2 *ngIf=\"!profileUser.friends\">0</h2>\n    <h4>FRIENDS</h4>\n  </div>\n  <div class=\"num\">\n\n    <h2 *ngIf=\"userGroups\">{{userGroups}}</h2>\n    <h2 *ngIf=\"!userGroups\">0</h2>\n    <a [routerLink] = \"['/groups', profileUser._id]\" class=\"toGroups\">\n    <h4>GROUPS</h4>\n  </a>\n  </div>\n</div>\n<div *ngIf=\"!myProfile\"class=\"info-friends-group\">\n  <div class=\"num1\">\n    <h2 *ngIf=\"profileUser.friends\">{{profileUser.friends.length}}</h2>\n    <h2 *ngIf=\"!profileUser.friends\">0</h2>\n    <h4>FRIENDS</h4>\n  </div>\n  <div class=\"num1\">\n    <h2 *ngIf=\"userGroups\">{{userGroups}}</h2>\n    <h2 *ngIf=\"!userGroups\">0</h2>\n    <a [routerLink] = \"['/groups', profileUser._id]\" class=\"toGroups\">\n    <h4>GROUPS</h4>\n  </a>\n  </div>\n  <div class=\"num1\">\n    <button *ngIf=\"notfollow\" class=\"add\" (click)=\"followUser()\">Follow</button>\n    <button *ngIf=\"!notfollow\" class=\"add\" (click)=\"followUser()\">Unfollow</button>\n  </div>\n</div>\n<nav>\n  <ul>\n      <li class=\"current game-comp\" #games data-value=\"1\" (click)='changeContent(games)'>Games</li>\n      <li class=\"game-comp\" #activity data-value=\"2\" (click)='changeContent(activity)'>Activity</li>\n      <li class=\"game-comp\" #posts  data-value=\"3\">Posts</li>\n  </ul>\n</nav>\n<div class=\"content\">\n<div class=\"usergames\" *ngIf=\"contenido === 'games'\">\n  <div *ngFor=\"let game of userGames\" class=\"game-inf\">\n    <a [routerLink] = '[\"/game\", game[0].id]'>\n    <img [src] = \"game[0].screenshots[0].url\" height=\"93\" width=\"156\">\n      </a>\n    <h5>{{game[0].name}}</h5>\n  </div>\n</div>\n<div *ngIf=\"contenido === 'activity'\">\n  <app-activity></app-activity>\n</div>\n</div>\n</div>\n<div class=\"menu\">\n<div class=\"icons\" >\n  <a [routerLink] =\"['/home']\">\n  <i class=\"material-icons nav-bar\">home</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] =\"['/browse']\">\n  <i class=\"material-icons nav-bar\">explore</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] = '[\"/contact\"]'>\n  <i class=\"material-icons nav-bar\">chat_bubble_outline</i>\n</a>\n</div>\n<div class=\"icons\" id=\"active\">\n  <a *ngIf=\"LoggedUser\" [routerLink]=\"['/profile', LoggedUser._id]\">\n  <i class=\"material-icons nav-bar\">perm_identity</i>\n  <p>Profile</p>\n</a>\n</div>\n\n</div>\n"
+module.exports = "\n<div class=\"header\">\n  <h3 *ngIf='myProfile'> My Profile </h3>\n  <h3 *ngIf=\"profileUser && !myProfile\">{{profileUser.username}}</h3>\n</div>\n<div *ngIf=\"profileUser\">\n<div class=\"carousel\">\n    <div class=\"carousel-inner\">\n        <input class=\"carousel-open\" type=\"radio\" id=\"carousel-1\" name=\"carousel\" aria-hidden=\"true\" hidden=\"\" checked=\"checked\">\n        <div class=\"carousel-item\">\n          <div class=\"main-view\">\n            <img *ngIf=\"profileUser.image\" [src]='profileUser.image' height=\"88\" id=\"profile-pic\">\n            <img *ngIf=\"!profileUser.image\" src= \"https://avatarfiles.alphacoders.com/840/84098.jpg\" height=\"88\" id=\"profile-pic\">\n            <h3 class=\"name\">{{profileUser.username}}</h3>\n            <p *ngIf=\"profileUser.location\"><span>{{profileUser.location.city}}</span> / <span>{{profileUser.location.country}}</span></p>\n            <p *ngIf=\"!profileUser.location\" class=\"location\"><span>City</span> / <span>Country</span></p>\n          </div>\n        </div>\n        <input class=\"carousel-open\" type=\"radio\" id=\"carousel-3\" name=\"carousel\" aria-hidden=\"true\" hidden=\"\">\n        <div class=\"carousel-item\">\n              <div class=\"information\">\n              <h1 class=\"saludo\"> Hola {{profileUser.username}}</h1>\n              </div>\n\n        </div>\n\n        <ol class=\"carousel-indicators\">\n            <li>\n                <label for=\"carousel-1\" class=\"carousel-bullet\">•</label>\n            </li>\n            <li>\n                <label for=\"carousel-3\" class=\"carousel-bullet\">•</label>\n            </li>\n        </ol>\n    </div>\n</div>\n<div *ngIf=\"myProfile\"class=\"info-friends-group\">\n  <div class=\"num\">\n    <h2 *ngIf=\"profileUser.friends\">{{profileUser.friends.length}}</h2>\n    <h2 *ngIf=\"!profileUser.friends\">0</h2>\n    <h4>FRIENDS</h4>\n  </div>\n  <div class=\"num\">\n\n    <h2 *ngIf=\"userGroups\">{{userGroups}}</h2>\n    <h2 *ngIf=\"!userGroups\">0</h2>\n    <a [routerLink] = \"['/groups', profileUser._id]\" class=\"toGroups\">\n    <h4>GROUPS</h4>\n  </a>\n  </div>\n</div>\n<div *ngIf=\"!myProfile\"class=\"info-friends-group\">\n  <div class=\"num1\">\n    <h2 *ngIf=\"profileUser.friends\">{{profileUser.friends.length}}</h2>\n    <h2 *ngIf=\"!profileUser.friends\">0</h2>\n    <h4>FRIENDS</h4>\n  </div>\n  <div class=\"num1\">\n    <h2 *ngIf=\"userGroups\">{{userGroups}}</h2>\n    <h2 *ngIf=\"!userGroups\">0</h2>\n    <a [routerLink] = \"['/groups', profileUser._id]\" class=\"toGroups\">\n    <h4>GROUPS</h4>\n  </a>\n  </div>\n  <div class=\"num1\">\n    <button *ngIf=\"notfollow\" class=\"add\" (click)=\"followUser()\">Follow</button>\n    <button *ngIf=\"!notfollow\" class=\"add\" (click)=\"followUser()\">Unfollow</button>\n  </div>\n</div>\n<nav>\n  <ul>\n      <li class=\"current game-comp\" #games data-value=\"1\" (click)='changeContent(games,activity)'>Games</li>\n      <li class=\"game-comp\" #activity data-value=\"2\" (click)='changeContent(activity,games)'>Activity</li>\n      <li class=\"game-comp\" #posts  data-value=\"3\">Posts</li>\n  </ul>\n</nav>\n<div class=\"content\">\n<div class=\"usergames\" *ngIf=\"contenido === 'games'\">\n  <div *ngFor=\"let game of userGames\" class=\"game-inf\">\n    <a [routerLink] = '[\"/game\", game[0].id]'>\n    <img [src] = \"game[0].screenshots[0].url\" height=\"93\" width=\"156\">\n      </a>\n    <h5>{{game[0].name}}</h5>\n  </div>\n</div>\n<div *ngIf=\"contenido === 'activity'\">\n  <app-activity></app-activity>\n</div>\n</div>\n</div>\n<div class=\"menu\">\n<div class=\"icons\" >\n  <a [routerLink] =\"['/home']\">\n  <i class=\"material-icons nav-bar\">home</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] =\"['/browse']\">\n  <i class=\"material-icons nav-bar\">explore</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] = '[\"/contact\"]'>\n  <i class=\"material-icons nav-bar\">chat_bubble_outline</i>\n</a>\n</div>\n<div class=\"icons\" id=\"active\" (click)=\"loadProfile()\">\n  <a *ngIf=\"LoggedUser\" [routerLink]=\"['/profile', LoggedUser._id]\">\n  <i class=\"material-icons nav-bar\">perm_identity</i>\n  <p>Profile</p>\n</a>\n</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -1595,21 +1594,14 @@ var ProfileComponent = (function () {
         this.notfollow = true;
         this.contenido = 'games';
         this.userGames = [];
+        this.newProfile = false;
         this.myProfile = false;
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.auth.isLoggedIn()
             .subscribe(function (user) {
-            _this.route.params
-                .subscribe(function (params) {
-                _this.profileId = params['id'];
-                _this.getUserGroups(_this.profileId);
-            });
-            _this.LoggedUser = _this.auth.getUser();
-            _this.getProfileUser(_this.profileId);
-            _this.checkIfMyProfile(_this.auth.user['_id']);
-            _this.checkIfFollow();
+            _this.loadProfile();
         });
         // this.route.params
         //     .subscribe((params)=> {
@@ -1617,6 +1609,18 @@ var ProfileComponent = (function () {
         //       this.getUserGroups(this.profileId)
         //     })
         // this.getGames(this.profileUser['games'])
+    };
+    ProfileComponent.prototype.loadProfile = function () {
+        var _this = this;
+        this.route.params
+            .subscribe(function (params) {
+            _this.profileId = params['id'];
+            _this.getUserGroups(_this.profileId);
+        });
+        this.LoggedUser = this.auth.getUser();
+        this.getProfileUser(this.profileId);
+        this.checkIfMyProfile(this.auth.user['_id']);
+        this.checkIfFollow();
     };
     ProfileComponent.prototype.getProfileUser = function (id) {
         var _this = this;
@@ -1665,7 +1669,6 @@ var ProfileComponent = (function () {
         this.groupService.getUserGroups(id)
             .subscribe(function (groups) {
             _this.userGroups = groups.length;
-            console.log(_this.userGroups);
         });
     };
     ProfileComponent.prototype.createObjforAct = function () {
@@ -1678,10 +1681,11 @@ var ProfileComponent = (function () {
         };
         return newObj;
     };
-    ProfileComponent.prototype.changeContent = function (elem) {
+    ProfileComponent.prototype.changeContent = function (elem, other) {
         var value = elem.innerHTML;
         this.contenido = value.toLowerCase();
-        console.log(this.contenido);
+        elem.classList.add('current');
+        other.classList.remove('current');
     };
     return ProfileComponent;
 }());
@@ -2318,7 +2322,8 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IsLoggedInService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2330,10 +2335,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var timeout = function (nS) { return new Promise(function (resolve) { return setTimeout(resolve, nS * 1000); }); };
 var IsLoggedInService = (function () {
-    function IsLoggedInService(auth) {
+    function IsLoggedInService(auth, router) {
         this.auth = auth;
+        this.router = router;
     }
     IsLoggedInService.prototype.canActivate = function () {
         console.log("Checking can activate");
@@ -2346,10 +2353,10 @@ var IsLoggedInService = (function () {
 }());
 IsLoggedInService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], IsLoggedInService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=isLoggedIn.canactivate.service.js.map
 
 /***/ }),

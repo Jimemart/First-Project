@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router'
 import { AddGameService } from  '../services/add-game.service'
 import {Router} from '@angular/router'
 
+
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -17,23 +19,29 @@ export class ChatComponent implements OnInit, AfterViewInit {
   recieverUser:object
   reciever;
   convo;
+  notification;
+  messages = []
   convMessages:Array<object>
   constructor(private chatService: ChaService,
               private auth:AuthService,
               private route: ActivatedRoute,
               private add:AddGameService,
               private elemRef:ElementRef,
-              private router:Router) {}
+              private router:Router,
+              ) {}
 
   ngOnInit() {
+
+
+
       this.auth.isLoggedIn().subscribe(user =>{
           this.user = user
-          this.route.params
-              .subscribe(params =>{
+          this.route.params.subscribe(params =>{
                 this.roomName = params['room']
                 this.reciever = params['id']
-                this.add.searchProfile(this.reciever)
-                  .subscribe(user =>{
+
+
+                this.add.searchProfile(this.reciever).subscribe(user =>{
                     this.recieverUser = user
                     this.getMessages(this.roomName)
 
@@ -44,6 +52,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
                   })
               })
         })
+
+
     }
 
 ngAfterViewInit(){
@@ -62,10 +72,10 @@ updateScroll(elem){
       recieve: this.reciever,
       nameOfSender: this.user['username']
     }
-
     text.value = ''
     this.chatService.saveMessage(message)
                     .subscribe()
+
   }
 
   getMessages(roomName){
@@ -79,5 +89,6 @@ updateScroll(elem){
   goback(){
     this.router.navigate(["/contact"])
   }
+
 
 }

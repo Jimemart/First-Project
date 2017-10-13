@@ -2,20 +2,21 @@
 <div class="header">
   <h3> Home </h3>
 </div>
-<div class="contenedor">
+<div class="contenedor" *ngIf="userGames">
 <div id="wrapper">
   <h3 class="sec-title">My games </h3>
   <p class="sec-par">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>
   <div class="module-section clearfix">
    <ul class="content">
     <li *ngFor="let g of userGames">
-      <div [attr.data-value]="g[0].id" (click)="goToPage(game)" #game>
-        <img [src] = 'g[0].cover.url' height="106">
+      <div [attr.data-value]="g.id" (click)="goToPage(game)" #game>
+        <img [src] = 'g.cover.url' height="106">
       </div>
     </li>
    </ul>
  </div>
 </div>
+<div>
   <div id="wrapper" *ngFor ="let plat of platRecom">
     <h3 class="sec-title">More games of {{plat.platform}}</h3>
       <p class="sec-par">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>
@@ -30,7 +31,7 @@
      </ul>
    </div><!--end of module-section-->
 </div>
-
+</div>
 
 
 <div id="wrapper">
@@ -39,9 +40,9 @@
   <div class="module-section clearfix">
    <ul class="content">
     <li *ngFor="let game of youMayLike">
-      <div [attr.data-value]='game[0].id' (click)="goToPage(gamelike)" #gamelike>
-        <img *ngIf='game[0].cover' [src]= 'game[0].cover.url' height="106">
-        <img *ngIf="!game[0].cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="106">
+      <div [attr.data-value]='game.id' (click)="goToPage(gamelike)" #gamelike>
+        <img *ngIf='game.cover' [src]= 'game.cover.url' height="106">
+        <img *ngIf="!game.cover"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height="106">
       </div>
     </li>
    </ul>
