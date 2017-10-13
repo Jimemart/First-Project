@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   contenido:string = 'games'
   userGames:Array<Object>=[]
   profileId:any
+  newProfile = false;
   myProfile:boolean = false;
   constructor(private auth:AuthService,
               private add:AddGameService,
@@ -31,15 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.auth.isLoggedIn()
           .subscribe(user =>{
-            this.route.params
-                .subscribe((params)=> {
-                  this.profileId = params['id']
-                  this.getUserGroups(this.profileId)
-                })
-            this.LoggedUser = this.auth.getUser()
-            this.getProfileUser(this.profileId)
-            this.checkIfMyProfile(this.auth.user['_id'])
-            this.checkIfFollow()
+            this.loadProfile()
           })
 
     // this.route.params
@@ -48,6 +41,18 @@ export class ProfileComponent implements OnInit {
     //       this.getUserGroups(this.profileId)
     //     })
     // this.getGames(this.profileUser['games'])
+  }
+
+  loadProfile(){
+    this.route.params
+        .subscribe((params)=> {
+          this.profileId = params['id']
+          this.getUserGroups(this.profileId)
+        })
+    this.LoggedUser = this.auth.getUser()
+    this.getProfileUser(this.profileId)
+    this.checkIfMyProfile(this.auth.user['_id'])
+    this.checkIfFollow()
   }
 
   getProfileUser(id){
@@ -96,7 +101,7 @@ getUserGroups(id){
   this.groupService.getUserGroups(id)
       .subscribe(groups =>{
         this.userGroups = groups.length
-        console.log(this.userGroups)
+
       })
 }
 
@@ -110,9 +115,10 @@ createObjforAct(){
   }
   return newObj
 }
-changeContent(elem){
+changeContent(elem,other){
   const value = elem.innerHTML
   this.contenido = value.toLowerCase()
-  console.log(this.contenido)
+  elem.classList.add('current')
+  other.classList.remove('current')
 }
 }

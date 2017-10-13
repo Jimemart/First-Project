@@ -79,7 +79,6 @@ import { ContactListComponent } from './contact-list/contact-list.component'
               AddGameService,
               EditUserService,
               GroupService,
-
               ChaService,
               ActivityService],
   bootstrap: [AppComponent]

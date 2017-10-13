@@ -17,9 +17,9 @@ import { ContactListComponent } from './contact-list/contact-list.component'
 export const routes:Routes= [
   {path: '',component:WelcomeComponent},
   {path: 'signup', component:MultiformComponent},
-  {path: 'list', component:GameListComponent },
+  {path: 'list', component:GameListComponent},
   {path: 'login', component: LogInComponent},
-  {path: 'profile/:id', component: ProfileComponent },
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'home', component: HomeComponent},
   {path: 'game/:id', component: GamePageComponent},
   {path: 'groups/:id', component: GroupsPageComponent},

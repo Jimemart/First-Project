@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { ActivityService } from '../services/activity.service'
 import { AuthService } from '../services/auth.service'
 import { ActivatedRoute } from '@angular/router'
@@ -10,6 +10,8 @@ import { MomentModule } from 'angular2-moment';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
+  
+
   profileId:string
   userActivities:Array<object>
   constructor(private auth:AuthService,
@@ -23,9 +25,10 @@ export class ActivityComponent implements OnInit {
           this.act.getActivitiesFromUser(this.profileId)
               .subscribe(acts => {
                 this.userActivities = acts
-                console.log(this.userActivities)
+
               })
         })
   }
+
 
 }

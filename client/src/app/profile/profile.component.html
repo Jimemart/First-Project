@@ -69,8 +69,8 @@
 </div>
 <nav>
   <ul>
-      <li class="current game-comp" #games data-value="1" (click)='changeContent(games)'>Games</li>
-      <li class="game-comp" #activity data-value="2" (click)='changeContent(activity)'>Activity</li>
+      <li class="current game-comp" #games data-value="1" (click)='changeContent(games,activity)'>Games</li>
+      <li class="game-comp" #activity data-value="2" (click)='changeContent(activity,games)'>Activity</li>
       <li class="game-comp" #posts  data-value="3">Posts</li>
   </ul>
 </nav>
@@ -104,7 +104,7 @@
   <i class="material-icons nav-bar">chat_bubble_outline</i>
 </a>
 </div>
-<div class="icons" id="active">
+<div class="icons" id="active" (click)="loadProfile()">
   <a *ngIf="LoggedUser" [routerLink]="['/profile', LoggedUser._id]">
   <i class="material-icons nav-bar">perm_identity</i>
   <p>Profile</p>
