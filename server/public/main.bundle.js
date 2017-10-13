@@ -1164,7 +1164,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n<div class=\"header\">\n  <h3> Home </h3>\n</div>\n<div class=\"contenedor\">\n<div id=\"wrapper\">\n  <h3 class=\"sec-title\">My games </h3>\n  <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n  <div class=\"module-section clearfix\">\n   <ul class=\"content\">\n    <li *ngFor=\"let g of userGames\">\n      <div [attr.data-value]=\"g[0].id\" (click)=\"goToPage(game)\" #game>\n        <img [src] = 'g[0].cover.url' height=\"106\">\n      </div>\n    </li>\n   </ul>\n </div>\n</div>\n  <div id=\"wrapper\" *ngFor =\"let plat of platRecom\">\n    <h3 class=\"sec-title\">More games of {{plat.platform}}</h3>\n      <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n    <div class=\"module-section clearfix\">\n     <ul class=\"content\">\n      <li *ngFor=\"let game of plat.games\">\n        <div [attr.data-value]='game.id' (click)=\"goToPage(gameplat)\" #gameplat>\n          <img *ngIf=\"!game.cover\" src = \"http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png\" height=\"106\">\n          <img *ngIf=\"game.cover\" [src] = \"game.cover.url\" height=\"106\">\n        </div>\n      </li>\n     </ul>\n   </div><!--end of module-section-->\n</div>\n\n\n\n<div id=\"wrapper\">\n  <h3 class=\"sec-title\">You might also like</h3>\n    <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n  <div class=\"module-section clearfix\">\n   <ul class=\"content\">\n    <li *ngFor=\"let game of youMayLike\">\n      <div [attr.data-value]='game[0].id' (click)=\"goToPage(gamelike)\" #gamelike>\n        <img *ngIf='game[0].cover' [src]= 'game[0].cover.url' height=\"106\">\n        <img *ngIf=\"!game[0].cover\"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height=\"106\">\n      </div>\n    </li>\n   </ul>\n </div>\n</div>\n</div>\n<div class=\"menu\">\n<div class=\"icons\" id=\"active\">\n  <a [routerLink] ='[\"/home\"]'>\n  <i class=\"material-icons nav-bar\">home</i>\n  <p>Home</p>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] ='[\"/browse\"]'>\n  <i class=\"material-icons nav-bar\">explore</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] = '[\"/contact\"]'>\n  <i class=\"material-icons nav-bar\">chat_bubble_outline</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink]=\"['/profile', this.user._id]\">\n  <i class=\"material-icons nav-bar\">perm_identity</i>\n</a>\n</div>\n</div>\n</div>\n"
+module.exports = "<div *ngIf=\"user\">\n<div class=\"header\">\n  <h3> Home </h3>\n</div>\n<div class=\"contenedor\" *ngIf=\"userGames\">\n<div id=\"wrapper\">\n  <h3 class=\"sec-title\">My games </h3>\n  <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n  <div class=\"module-section clearfix\">\n   <ul class=\"content\">\n    <li *ngFor=\"let g of userGames\">\n      <div [attr.data-value]=\"g.id\" (click)=\"goToPage(game)\" #game>\n        <img [src] = 'g.cover.url' height=\"106\">\n      </div>\n    </li>\n   </ul>\n </div>\n</div>\n<div>\n  <div id=\"wrapper\" *ngFor =\"let plat of platRecom\">\n    <h3 class=\"sec-title\">More games of {{plat.platform}}</h3>\n      <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n    <div class=\"module-section clearfix\">\n     <ul class=\"content\">\n      <li *ngFor=\"let game of plat.games\">\n        <div [attr.data-value]='game.id' (click)=\"goToPage(gameplat)\" #gameplat>\n          <img *ngIf=\"!game.cover\" src = \"http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png\" height=\"106\">\n          <img *ngIf=\"game.cover\" [src] = \"game.cover.url\" height=\"106\">\n        </div>\n      </li>\n     </ul>\n   </div><!--end of module-section-->\n</div>\n</div>\n\n\n<div id=\"wrapper\">\n  <h3 class=\"sec-title\">You might also like</h3>\n    <p class=\"sec-par\">Aquí aparecen los títulos de tus juegos, los últimos a los que has jugado o te gustaría jugar</p>\n  <div class=\"module-section clearfix\">\n   <ul class=\"content\">\n    <li *ngFor=\"let game of youMayLike\">\n      <div [attr.data-value]='game.id' (click)=\"goToPage(gamelike)\" #gamelike>\n        <img *ngIf='game.cover' [src]= 'game.cover.url' height=\"106\">\n        <img *ngIf=\"!game.cover\"  src ='http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png' height=\"106\">\n      </div>\n    </li>\n   </ul>\n </div>\n</div>\n</div>\n<div class=\"menu\">\n<div class=\"icons\" id=\"active\">\n  <a [routerLink] ='[\"/home\"]'>\n  <i class=\"material-icons nav-bar\">home</i>\n  <p>Home</p>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] ='[\"/browse\"]'>\n  <i class=\"material-icons nav-bar\">explore</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink] = '[\"/contact\"]'>\n  <i class=\"material-icons nav-bar\">chat_bubble_outline</i>\n</a>\n</div>\n<div class=\"icons\">\n  <a [routerLink]=\"['/profile', this.user._id]\">\n  <i class=\"material-icons nav-bar\">perm_identity</i>\n</a>\n</div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1215,8 +1215,6 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.getRandomId = function (arr) {
         var random = Math.floor(Math.random() * ((arr.length - 1) - 1));
-        console.log(arr);
-        console.log(arr[random]);
         return arr[random];
     };
     HomeComponent.prototype.getGames = function (gamesArr) {
@@ -1224,8 +1222,10 @@ var HomeComponent = (function () {
         gamesArr.forEach(function (e) {
             _this.add.findGame(e)
                 .subscribe(function (game) {
-                _this.add.turnPic(game);
-                _this.userGames.push(game);
+                if (game[0]) {
+                    _this.add.turnPic(game);
+                    _this.userGames.push(game[0]);
+                }
             });
         });
     };
@@ -1253,8 +1253,11 @@ var HomeComponent = (function () {
         gameArr[0].forEach(function (e) {
             _this.add.findGame(e)
                 .subscribe(function (game) {
-                _this.add.turnPic(game);
-                _this.youMayLike.push(game);
+                if (game[0]) {
+                    console.log(game[0]);
+                    _this.add.turnPic(game);
+                    _this.youMayLike.push(game[0]);
+                }
             });
         });
     };
@@ -1635,9 +1638,11 @@ var ProfileComponent = (function () {
         gamesArr.forEach(function (e) {
             _this.add.findGame(e)
                 .subscribe(function (game) {
-                _this.add.turnPic(game);
-                _this.add.bigScreenshot(game[0].screenshots);
-                _this.userGames.push(game);
+                if (game[0]) {
+                    _this.add.turnPic(game);
+                    _this.add.bigScreenshot(game[0].screenshots);
+                    _this.userGames.push(game);
+                }
             });
         });
     };
