@@ -67,9 +67,11 @@ export class ProfileComponent implements OnInit {
     gamesArr.forEach(e =>{
       this.add.findGame(e)
               .subscribe(game =>{
+                if(game[0]){
                 this.add.turnPic(game)
                 this.add.bigScreenshot(game[0].screenshots)
                 this.userGames.push(game)
+              }
               })
     })
 }
